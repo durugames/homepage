@@ -4,9 +4,129 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>아스트라 도미니언 | 두루게임즈</title>
-<meta name="description" content="행성을 개척하고 공유 은하에서 영토를 차지하는 모바일 우주 전략 SLG.">
+<meta name="description" content="하나뿐인 은하에서 좌표를 선점하라 — 행성을 개척하고 함대를 이끄는 모바일 우주 전략 SLG.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="/style.css">
+<style>
+/* ---- 랜딩 전용 ---- */
+.stars {
+  position: relative; overflow: hidden;
+  padding: 90px 0 70px; text-align: center;
+}
+.stars::before, .stars::after {
+  content: ""; position: absolute; inset: -50%;
+  background-image:
+    radial-gradient(1.5px 1.5px at 20% 30%, #cfe7ff 50%, transparent 51%),
+    radial-gradient(1px 1px at 70% 20%, #9fd0ff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 40% 70%, #ffffff 50%, transparent 51%),
+    radial-gradient(1px 1px at 85% 60%, #cfe7ff 50%, transparent 51%),
+    radial-gradient(1px 1px at 55% 45%, #9fd0ff 50%, transparent 51%),
+    radial-gradient(2px 2px at 10% 80%, #ffffff 50%, transparent 51%),
+    radial-gradient(1px 1px at 92% 85%, #cfe7ff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 30% 10%, #9fd0ff 50%, transparent 51%);
+  background-size: 520px 520px;
+  animation: drift 120s linear infinite;
+  opacity: 0.7; pointer-events: none;
+}
+.stars::after { background-size: 340px 340px; animation-duration: 80s; opacity: 0.45; }
+@keyframes drift { to { transform: translate3d(260px, 130px, 0); } }
+.stars > * { position: relative; z-index: 1; }
+
+.tagline {
+  font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 800;
+  line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 14px;
+}
+.tagline em { font-style: normal; color: var(--accent); }
+.tagsub { color: var(--muted); font-size: 1.08rem; max-width: 560px; margin: 0 auto 30px; }
+
+.hook {
+  display: flex; gap: 36px; align-items: center;
+  margin: 64px 0;
+}
+.hook:nth-child(even) { flex-direction: row-reverse; }
+.hook .viz {
+  flex: 0 0 280px; height: 280px; border-radius: 14px;
+  border: 1px solid var(--panel-border);
+  background: #0a0f18; position: relative; overflow: hidden;
+}
+.hook .txt { flex: 1; }
+.hook h2 { border: none; padding: 0; font-size: 1.45rem; margin: 0 0 4px; }
+.hook .kicker {
+  color: var(--accent); font-size: 0.82rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+}
+.hook p { color: var(--muted); margin-top: 10px; }
+
+/* 행성 비주얼 */
+.viz-planet::before {
+  content: ""; position: absolute; left: 50%; bottom: -46%;
+  width: 320px; height: 320px; transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 25%, #3f7fb8, #1d456e 45%, #0d2038 75%);
+  box-shadow: 0 0 60px rgba(89, 217, 255, 0.35);
+}
+.viz-planet::after {
+  content: ""; position: absolute; left: 50%; bottom: 8%;
+  width: 10px; height: 10px; transform: translateX(-50%);
+  background: #ffd97a; border-radius: 2px;
+  box-shadow: -46px 10px 0 -1px #7ce0a3, 42px 6px 0 -1px #ff9a6b,
+    -20px -16px 0 -2px #cfe7ff, 24px -20px 0 -2px #59d9ff;
+}
+/* 은하 비주얼 */
+.viz-galaxy::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(2.5px 2.5px at 50% 50%, #ffd97a 50%, transparent 51%),
+    radial-gradient(2px 2px at 32% 38%, #59d9ff 50%, transparent 51%),
+    radial-gradient(2px 2px at 68% 34%, #cfe7ff 50%, transparent 51%),
+    radial-gradient(2px 2px at 26% 64%, #ff9a6b 50%, transparent 51%),
+    radial-gradient(2px 2px at 72% 66%, #7ce0a3 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 44% 24%, #9fd0ff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 58% 76%, #9fd0ff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 18% 48%, #cfe7ff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 82% 50%, #cfe7ff 50%, transparent 51%);
+}
+.viz-galaxy::after {
+  content: ""; position: absolute; inset: 0; opacity: 0.5;
+  background:
+    linear-gradient(32deg, transparent 49.6%, rgba(89,217,255,.5) 49.9%, rgba(89,217,255,.5) 50.1%, transparent 50.4%),
+    linear-gradient(-24deg, transparent 49.6%, rgba(89,217,255,.4) 49.9%, rgba(89,217,255,.4) 50.1%, transparent 50.4%),
+    linear-gradient(78deg, transparent 49.7%, rgba(89,217,255,.35) 49.9%, rgba(89,217,255,.35) 50.1%, transparent 50.3%);
+}
+/* 함대 비주얼 */
+.viz-fleet::before {
+  content: "▲"; position: absolute; left: 24%; top: 58%;
+  color: var(--accent); font-size: 26px; transform: rotate(38deg);
+  text-shadow: 0 0 18px rgba(89, 217, 255, 0.8),
+    34px -26px 0 rgba(89,217,255,.65), 14px -50px 0 rgba(89,217,255,.4);
+}
+.viz-fleet::after {
+  content: ""; position: absolute; right: 14%; top: 16%;
+  width: 74px; height: 74px; border-radius: 50%;
+  background: radial-gradient(circle at 38% 30%, #b8743f, #6e3a1d 50%, #38160d 80%);
+  box-shadow: 0 0 30px rgba(255, 154, 107, 0.4);
+}
+
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px; margin: 20px 0 40px;
+}
+.grid .cell {
+  background: var(--panel); border: 1px solid var(--panel-border);
+  border-radius: 10px; padding: 18px 20px;
+}
+.grid .cell strong { display: block; margin-bottom: 4px; }
+.grid .cell span { color: var(--muted); font-size: 0.88rem; }
+
+.cta { text-align: center; padding: 30px 0 10px; }
+.cta .btn { margin: 6px; }
+.btn.ghost { background: transparent; border: 1px solid var(--panel-border); color: var(--muted); }
+
+@media (max-width: 700px) {
+  .hook, .hook:nth-child(even) { flex-direction: column; }
+  .hook .viz { flex-basis: auto; width: 100%; max-width: 340px; margin: 0 auto; }
+}
+</style>
 </head>
 <body>
 <header>
@@ -21,34 +141,70 @@
   </div>
 </header>
 
-<main class="wrap">
-  <div class="hero">
-    <h1>아스트라 도미니언</h1>
-    <p>행성을 개척하고, 함대를 이끌고, 하나의 은하에서 영토를 차지하라.</p>
-  </div>
-
-  <div class="card">
-    <h2>게임 소개</h2>
-    <ul>
-      <li><strong>행성 경영</strong> — 9가지 자원을 채굴·정제하고 건물을 성장시키는 SLG</li>
-      <li><strong>공유 은하</strong> — 모든 플레이어가 같은 은하에서 좌표를 두고 경쟁</li>
-      <li><strong>함대 전투</strong> — 탐사, 약탈, NPC 세력전과 회사(길드) 동맹전</li>
-      <li><strong>계정 연구</strong> — 스킬북과 연구로 제국을 영구히 강화</li>
-    </ul>
-  </div>
-
-  <div class="card" style="text-align:center">
-    <h2>다운로드</h2>
-    <p style="color:var(--muted)">출시 준비 중입니다.</p>
+<div class="stars">
+  <div class="wrap">
+    <p class="kicker" style="color:var(--accent);letter-spacing:.18em;font-weight:700;font-size:.85rem">ASTRA DOMINION</p>
+    <h1 class="tagline">은하는 <em>하나</em>뿐이다.<br>그 좌표도 <em>하나</em>뿐이다.</h1>
+    <p class="tagsub">서버마다 리셋되는 왕국이 아니라, 모든 플레이어가 공유하는 단 하나의 은하.
+    당신이 차지한 좌표는 은하 전체에서 유일한 당신의 영토가 됩니다.</p>
     <p>
       <a class="btn" href="#" aria-disabled="true">Google Play (준비 중)</a>
       <a class="btn" href="#" aria-disabled="true">App Store (준비 중)</a>
     </p>
   </div>
+</div>
 
-  <p style="color:var(--muted);font-size:0.85rem;text-align:center">
-    지원: <a href="/support/">고객지원</a> · <a href="/delete/">계정 삭제 안내</a>
-  </p>
+<main class="wrap">
+
+  <div class="hook">
+    <div class="viz viz-planet" role="img" aria-label="행성 표면 위 건물들"></div>
+    <div class="txt">
+      <p class="kicker">Build</p>
+      <h2>나만의 행성을 가꾼다</h2>
+      <p>위에서 내려다보는 행성 표면에 광산과 정제소, 조선소를 올리고 9가지 자원의 경제를
+      돌립니다. 벨트가 돌고 연기가 피어오르는 살아있는 행성 — 자리를 비운 사이에도 생산은
+      멈추지 않습니다.</p>
+    </div>
+  </div>
+
+  <div class="hook">
+    <div class="viz viz-galaxy" role="img" aria-label="항성계를 잇는 스타레인 지도"></div>
+    <div class="txt">
+      <p class="kicker">Explore &amp; Claim</p>
+      <h2>모두가 같은 지도 위에서 싸운다</h2>
+      <p>절차 생성된 광대한 은하를 탐사선으로 밝히고, 항성계를 잇는 스타레인을 따라 세력을
+      넓히세요. 좌표마다 고유한 이름을 가진 행성들 — 좋은 자리는 한정되어 있고, 선점은
+      되돌릴 수 없습니다.</p>
+    </div>
+  </div>
+
+  <div class="hook">
+    <div class="viz viz-fleet" role="img" aria-label="행성으로 향하는 함대"></div>
+    <div class="txt">
+      <p class="kicker">Conquer Together</p>
+      <h2>함대를 이끌고, 회사를 세운다</h2>
+      <p>함대를 건조해 NPC 세력을 몰아내고 다른 제국의 행성을 약탈하세요. 혼자가 버거우면
+      회사(길드)를 세워 동맹을 맺고, 공동 연구로 함께 강해집니다. 은하의 정치는
+      플레이어가 만듭니다.</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top:56px">이런 게임입니다</h2>
+  <div class="grid">
+    <div class="cell"><strong>⛏️ 9종 자원 경제</strong><span>광물부터 공허수정까지 — 캐고, 정제하고, 지킨다</span></div>
+    <div class="cell"><strong>🔭 탐사와 전장의 안개</strong><span>밝히기 전까지 은하는 미지의 영역</span></div>
+    <div class="cell"><strong>🧪 계정 연구</strong><span>스킬북으로 쌓는 영구 성장 — 행성을 잃어도 연구는 남는다</span></div>
+    <div class="cell"><strong>🛡️ 약탈과 방어</strong><span>자원창고로 지키고, 보험으로 대비하고, 함대로 되갚는다</span></div>
+    <div class="cell"><strong>🤝 회사·동맹·외교</strong><span>공동 연구, 자원 지원, 동맹 채팅</span></div>
+    <div class="cell"><strong>📱 가로 한 화면</strong><span>모바일에 맞춘 조작 — 출퇴근 5분이면 제국이 굴러간다</span></div>
+  </div>
+
+  <div class="cta">
+    <h2 style="border:none;padding:0">지금은 출시 준비 중</h2>
+    <p style="color:var(--muted)">Google Play · App Store 동시 출시를 준비하고 있습니다.</p>
+    <a class="btn ghost" href="/support/">문의하기</a>
+  </div>
+
 </main>
 
 <footer>
