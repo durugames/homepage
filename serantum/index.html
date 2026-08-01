@@ -3,128 +3,255 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07090b">
 <title>세란텀: 은하 대개척 | 두루게임즈</title>
-<meta name="description" content="하나뿐인 은하에서 좌표를 선점하라 — 행성을 개척하고 함대를 이끄는 모바일 우주 전략 SLG.">
+<meta name="description" content="하나의 은하, 한정된 좌표. 행성을 개척하고 함대를 이끄는 모바일 우주 전략 게임 세란텀.">
+<meta property="og:title" content="세란텀: 은하 대개척">
+<meta property="og:description" content="하나의 은하, 한정된 좌표. 먼저 발견하고 먼저 차지하세요.">
+<meta property="og:image" content="https://durugames.com/assets/serantum-hero.jpg">
+<link rel="preload" as="image" href="/assets/serantum-hero.jpg" fetchpriority="high">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="/style.css">
 <style>
-/* ---- 랜딩 전용 ---- */
-.stars {
-  position: relative; overflow: hidden;
-  padding: 90px 0 70px; text-align: center;
+:root {
+  --ser-bg: #07090b;
+  --ser-ink: #f0f0eb;
+  --ser-dim: #8f9498;
+  --ser-line: rgba(240, 240, 235, 0.18);
+  --ser-mark: #d89a45;
 }
-.stars::before, .stars::after {
-  content: ""; position: absolute; inset: -50%;
-  background-image:
-    radial-gradient(1.5px 1.5px at 20% 30%, #cfe7ff 50%, transparent 51%),
-    radial-gradient(1px 1px at 70% 20%, #9fd0ff 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 40% 70%, #ffffff 50%, transparent 51%),
-    radial-gradient(1px 1px at 85% 60%, #cfe7ff 50%, transparent 51%),
-    radial-gradient(1px 1px at 55% 45%, #9fd0ff 50%, transparent 51%),
-    radial-gradient(2px 2px at 10% 80%, #ffffff 50%, transparent 51%),
-    radial-gradient(1px 1px at 92% 85%, #cfe7ff 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 30% 10%, #9fd0ff 50%, transparent 51%);
-  background-size: 520px 520px;
-  animation: drift 120s linear infinite;
-  opacity: 0.7; pointer-events: none;
-}
-.stars::after { background-size: 340px 340px; animation-duration: 80s; opacity: 0.45; }
-@keyframes drift { to { transform: translate3d(260px, 130px, 0); } }
-.stars > * { position: relative; z-index: 1; }
 
-.tagline {
-  font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 800;
-  line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 14px;
+body {
+  background: var(--ser-bg);
+  color: var(--ser-ink);
 }
-.tagline em { font-style: normal; color: var(--accent); }
-.tagsub { color: var(--muted); font-size: 1.08rem; max-width: 560px; margin: 0 auto 30px; }
 
-.hook {
-  display: flex; gap: 36px; align-items: center;
-  margin: 64px 0;
-}
-.hook:nth-child(even) { flex-direction: row-reverse; }
-.hook .viz {
-  flex: 0 0 280px; height: 280px; border-radius: 14px;
-  border: 1px solid var(--panel-border);
-  background: #0a0f18; position: relative; overflow: hidden;
-}
-.hook .txt { flex: 1; }
-.hook h2 { border: none; padding: 0; font-size: 1.45rem; margin: 0 0 4px; }
-.hook .kicker {
-  color: var(--accent); font-size: 0.82rem; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase;
-}
-.hook p { color: var(--muted); margin-top: 10px; }
+main { padding: 0; }
 
-/* 행성 비주얼 */
-.viz-planet::before {
-  content: ""; position: absolute; left: 50%; bottom: -46%;
-  width: 320px; height: 320px; transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 25%, #3f7fb8, #1d456e 45%, #0d2038 75%);
-  box-shadow: 0 0 60px rgba(89, 217, 255, 0.35);
+header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 10;
+  border: 0;
+  background: linear-gradient(#07090b, transparent);
+  backdrop-filter: none;
 }
-.viz-planet::after {
-  content: ""; position: absolute; left: 50%; bottom: 8%;
-  width: 10px; height: 10px; transform: translateX(-50%);
-  background: #ffd97a; border-radius: 2px;
-  box-shadow: -46px 10px 0 -1px #7ce0a3, 42px 6px 0 -1px #ff9a6b,
-    -20px -16px 0 -2px #cfe7ff, 24px -20px 0 -2px #59d9ff;
+
+header .wrap,
+.serantum-shell {
+  width: min(100% - 48px, 1120px);
+  max-width: none;
+  margin-inline: auto;
+  padding: 0;
 }
-/* 은하 비주얼 */
-.viz-galaxy::before {
-  content: ""; position: absolute; inset: 0;
+
+header .wrap { height: 72px; }
+.logo span, nav a:hover { color: var(--ser-mark); }
+nav a { color: rgba(240, 240, 235, 0.72); }
+nav a[aria-current="page"] { color: #fff; }
+
+.game-hero {
+  position: relative;
+  min-height: min(880px, 100svh);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.game-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background:
-    radial-gradient(2.5px 2.5px at 50% 50%, #ffd97a 50%, transparent 51%),
-    radial-gradient(2px 2px at 32% 38%, #59d9ff 50%, transparent 51%),
-    radial-gradient(2px 2px at 68% 34%, #cfe7ff 50%, transparent 51%),
-    radial-gradient(2px 2px at 26% 64%, #ff9a6b 50%, transparent 51%),
-    radial-gradient(2px 2px at 72% 66%, #7ce0a3 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 44% 24%, #9fd0ff 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 58% 76%, #9fd0ff 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 18% 48%, #cfe7ff 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 82% 50%, #cfe7ff 50%, transparent 51%);
-}
-.viz-galaxy::after {
-  content: ""; position: absolute; inset: 0; opacity: 0.5;
-  background:
-    linear-gradient(32deg, transparent 49.6%, rgba(89,217,255,.5) 49.9%, rgba(89,217,255,.5) 50.1%, transparent 50.4%),
-    linear-gradient(-24deg, transparent 49.6%, rgba(89,217,255,.4) 49.9%, rgba(89,217,255,.4) 50.1%, transparent 50.4%),
-    linear-gradient(78deg, transparent 49.7%, rgba(89,217,255,.35) 49.9%, rgba(89,217,255,.35) 50.1%, transparent 50.3%);
-}
-/* 함대 비주얼 */
-.viz-fleet::before {
-  content: "▲"; position: absolute; left: 24%; top: 58%;
-  color: var(--accent); font-size: 26px; transform: rotate(38deg);
-  text-shadow: 0 0 18px rgba(89, 217, 255, 0.8),
-    34px -26px 0 rgba(89,217,255,.65), 14px -50px 0 rgba(89,217,255,.4);
-}
-.viz-fleet::after {
-  content: ""; position: absolute; right: 14%; top: 16%;
-  width: 74px; height: 74px; border-radius: 50%;
-  background: radial-gradient(circle at 38% 30%, #b8743f, #6e3a1d 50%, #38160d 80%);
-  box-shadow: 0 0 30px rgba(255, 154, 107, 0.4);
+    linear-gradient(90deg, rgba(5, 7, 8, 0.94) 0%, rgba(5, 7, 8, 0.62) 37%, rgba(5, 7, 8, 0.06) 72%),
+    linear-gradient(0deg, var(--ser-bg) 0%, transparent 38%);
 }
 
-.grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 14px; margin: 20px 0 40px;
+.game-hero__art {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% center;
 }
-.grid .cell {
-  background: var(--panel); border: 1px solid var(--panel-border);
-  border-radius: 10px; padding: 18px 20px;
+
+.game-hero__content { padding: 160px 0 96px; }
+
+.eyebrow {
+  margin: 0 0 20px;
+  color: var(--ser-mark);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
-.grid .cell strong { display: block; margin-bottom: 4px; }
-.grid .cell span { color: var(--muted); font-size: 0.88rem; }
 
-.cta { text-align: center; padding: 30px 0 10px; }
-.cta .btn { margin: 6px; }
-.btn.ghost { background: transparent; border: 1px solid var(--panel-border); color: var(--muted); }
+.game-hero h1 {
+  max-width: 780px;
+  margin: 0;
+  font-size: clamp(3.5rem, 8.8vw, 7.5rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.075em;
+}
 
-@media (max-width: 700px) {
-  .hook, .hook:nth-child(even) { flex-direction: column; }
-  .hook .viz { flex-basis: auto; width: 100%; max-width: 340px; margin: 0 auto; }
+.game-hero__lead {
+  max-width: 520px;
+  margin: 34px 0 0;
+  color: rgba(240, 240, 235, 0.76);
+  font-size: clamp(1rem, 1.8vw, 1.14rem);
+  line-height: 1.75;
+}
+
+.game-hero__meta {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-top: 34px;
+  color: rgba(240, 240, 235, 0.55);
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+}
+
+.game-hero__meta span + span::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  margin: 0 18px 4px 0;
+  background: var(--ser-line);
+}
+
+.signal-strip {
+  border-block: 1px solid var(--ser-line);
+}
+
+.signal-strip .serantum-shell {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.signal {
+  min-height: 138px;
+  padding: 30px 36px;
+  border-right: 1px solid var(--ser-line);
+}
+
+.signal:first-child { padding-left: 0; }
+.signal:last-child { padding-right: 0; border-right: 0; }
+.signal b { display: block; font-size: 2.2rem; line-height: 1; letter-spacing: -0.05em; }
+.signal span { display: block; margin-top: 10px; color: var(--ser-dim); font-size: 0.8rem; }
+
+.statement {
+  display: grid;
+  grid-template-columns: 0.6fr 1.4fr;
+  gap: 64px;
+  padding: 150px 0 140px;
+}
+
+.statement h2 {
+  max-width: 790px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+  line-height: 1.12;
+  letter-spacing: -0.06em;
+}
+
+.statement h2 em { color: var(--ser-mark); font-style: normal; }
+.statement__body { max-width: 590px; margin-top: 40px; color: var(--ser-dim); font-size: 1rem; }
+
+.chapters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-block: 1px solid var(--ser-line);
+}
+
+.chapter {
+  min-height: 380px;
+  padding: 42px 38px 48px;
+  border-right: 1px solid var(--ser-line);
+}
+
+.chapter:first-child { padding-left: 0; }
+.chapter:last-child { padding-right: 0; border-right: 0; }
+.chapter__number { color: var(--ser-mark); font: 600 0.75rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.12em; }
+.chapter h3 { margin: 90px 0 18px; color: var(--ser-ink); font-size: 1.55rem; letter-spacing: -0.03em; }
+.chapter p { margin: 0; color: var(--ser-dim); font-size: 0.92rem; line-height: 1.75; }
+
+.systems { padding: 150px 0; }
+.systems__head { display: flex; justify-content: space-between; gap: 32px; align-items: end; margin-bottom: 54px; }
+.systems h2 { margin: 0; padding: 0; border: 0; font-size: clamp(2.2rem, 5vw, 4rem); letter-spacing: -0.055em; }
+.systems__head p { max-width: 390px; margin: 0; color: var(--ser-dim); }
+
+.system {
+  display: grid;
+  grid-template-columns: 80px 0.7fr 1.3fr;
+  gap: 24px;
+  align-items: baseline;
+  padding: 26px 0;
+  border-top: 1px solid var(--ser-line);
+}
+
+.system:last-child { border-bottom: 1px solid var(--ser-line); }
+.system__index { color: var(--ser-mark); font: 600 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.system h3 { margin: 0; color: var(--ser-ink); font-size: 1.05rem; }
+.system p { margin: 0; color: var(--ser-dim); font-size: 0.9rem; }
+
+.launch {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 80px;
+  align-items: end;
+  padding: 90px 0;
+  border-top: 1px solid var(--ser-line);
+}
+
+.launch h2 { margin: 0; padding: 0; border: 0; font-size: clamp(2.2rem, 5vw, 4.4rem); line-height: 1.06; letter-spacing: -0.06em; }
+.launch p { margin: 24px 0 0; color: var(--ser-dim); }
+.launch__link { display: flex; justify-content: space-between; gap: 24px; padding: 18px 0; border-block: 1px solid var(--ser-line); color: var(--ser-ink); text-decoration: none; font-size: 0.88rem; }
+.launch__link:hover { color: var(--ser-mark); }
+
+footer { border-color: var(--ser-line); }
+footer .wrap { width: min(100% - 48px, 1120px); max-width: none; padding: 0; }
+
+@media (max-width: 760px) {
+  header .wrap,
+  .serantum-shell,
+  footer .wrap { width: min(100% - 36px, 1120px); }
+  header .wrap { height: 64px; }
+  nav a { margin-left: 14px; }
+  nav a:nth-child(n + 3) { display: none; }
+  .game-hero { min-height: 720px; }
+  .game-hero::after { background: linear-gradient(0deg, var(--ser-bg) 2%, rgba(5, 7, 8, 0.2) 67%, rgba(5, 7, 8, 0.68) 100%); }
+  .game-hero__art { object-position: 68% center; }
+  .game-hero__content { padding: 130px 0 72px; }
+  .game-hero h1 { max-width: 520px; font-size: clamp(3.15rem, 15vw, 5.2rem); }
+  .game-hero__lead { max-width: 440px; }
+  .game-hero__meta { flex-wrap: wrap; gap: 10px 14px; }
+  .game-hero__meta span + span::before { width: 14px; margin-right: 14px; }
+  .signal-strip .serantum-shell { grid-template-columns: 1fr; }
+  .signal, .signal:first-child, .signal:last-child { min-height: auto; padding: 22px 0; border-right: 0; border-bottom: 1px solid var(--ser-line); }
+  .signal:last-child { border-bottom: 0; }
+  .signal b { font-size: 1.7rem; }
+  .statement { grid-template-columns: 1fr; gap: 28px; padding: 100px 0; }
+  .statement__body { margin-top: 26px; }
+  .chapters { grid-template-columns: 1fr; }
+  .chapter, .chapter:first-child, .chapter:last-child { min-height: auto; padding: 34px 0 40px; border-right: 0; border-bottom: 1px solid var(--ser-line); }
+  .chapter:last-child { border-bottom: 0; }
+  .chapter h3 { margin: 48px 0 14px; }
+  .systems { padding: 100px 0; }
+  .systems__head { display: block; }
+  .systems__head p { margin-top: 20px; }
+  .system { grid-template-columns: 46px 1fr; gap: 10px 16px; }
+  .system p { grid-column: 2; }
+  .launch { grid-template-columns: 1fr; gap: 48px; padding: 72px 0; }
 }
 </style>
 </head>
@@ -132,8 +259,8 @@
 <header>
   <div class="wrap">
     <a class="logo" href="/">DURU<span>GAMES</span></a>
-    <nav>
-      <a href="/serantum/">게임</a>
+    <nav aria-label="주요 메뉴">
+      <a href="/serantum/" aria-current="page">게임</a>
       <a href="/support/">고객지원</a>
       <a href="/terms/">이용약관</a>
       <a href="/privacy/">개인정보처리방침</a>
@@ -141,70 +268,90 @@
   </div>
 </header>
 
-<div class="stars">
-  <div class="wrap">
-    <p class="kicker" style="color:var(--accent);letter-spacing:.18em;font-weight:700;font-size:.85rem">SERANTUM · 은하 대개척</p>
-    <h1 class="tagline">은하는 <em>하나</em>뿐이다.<br>그 좌표도 <em>하나</em>뿐이다.</h1>
-    <p class="tagsub">서버마다 리셋되는 왕국이 아니라, 모든 플레이어가 공유하는 단 하나의 은하.
-    당신이 차지한 좌표는 은하 전체에서 유일한 당신의 영토가 됩니다.</p>
-    <p>
-      <a class="btn" href="#" aria-disabled="true">Google Play (준비 중)</a>
-      <a class="btn" href="#" aria-disabled="true">App Store (준비 중)</a>
-    </p>
-  </div>
-</div>
-
-<main class="wrap">
-
-  <div class="hook">
-    <div class="viz viz-planet" role="img" aria-label="행성 표면 위 건물들"></div>
-    <div class="txt">
-      <p class="kicker">Build</p>
-      <h2>나만의 행성을 가꾼다</h2>
-      <p>위에서 내려다보는 행성 표면에 광산과 정제소, 조선소를 올리고 9가지 자원의 경제를
-      돌립니다. 벨트가 돌고 연기가 피어오르는 살아있는 행성 — 자리를 비운 사이에도 생산은
-      멈추지 않습니다.</p>
+<main>
+  <section class="game-hero" aria-labelledby="serantum-title">
+    <img class="game-hero__art" src="/assets/serantum-hero.jpg" alt="개척 행성 궤도로 진입하는 세 척의 함선" width="1915" height="821" fetchpriority="high">
+    <div class="serantum-shell game-hero__content">
+      <p class="eyebrow">SERANTUM / 은하 대개척</p>
+      <h1 id="serantum-title">은하에<br>빈자리는 없다.</h1>
+      <p class="game-hero__lead">탐사선을 보내고, 행성을 선점하고, 함대를 움직이세요. 모든 플레이어는 단 하나의 은하에서 시작합니다.</p>
+      <div class="game-hero__meta" aria-label="게임 정보">
+        <span>MOBILE STRATEGY</span>
+        <span>ONLINE GALAXY</span>
+        <span>IN DEVELOPMENT</span>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="hook">
-    <div class="viz viz-galaxy" role="img" aria-label="항성계를 잇는 스타레인 지도"></div>
-    <div class="txt">
-      <p class="kicker">Explore &amp; Claim</p>
-      <h2>모두가 같은 지도 위에서 싸운다</h2>
-      <p>절차 생성된 광대한 은하를 탐사선으로 밝히고, 항성계를 잇는 스타레인을 따라 세력을
-      넓히세요. 좌표마다 고유한 이름을 가진 행성들 — 좋은 자리는 한정되어 있고, 선점은
-      되돌릴 수 없습니다.</p>
+  <section class="signal-strip" aria-label="핵심 규모">
+    <div class="serantum-shell">
+      <div class="signal"><b>1</b><span>모두가 공유하는 하나의 은하</span></div>
+      <div class="signal"><b>9</b><span>채굴하고 정제하는 자원 체계</span></div>
+      <div class="signal"><b>24H</b><span>접속하지 않아도 이어지는 생산</span></div>
     </div>
-  </div>
+  </section>
 
-  <div class="hook">
-    <div class="viz viz-fleet" role="img" aria-label="행성으로 향하는 함대"></div>
-    <div class="txt">
-      <p class="kicker">Conquer Together</p>
-      <h2>함대를 이끌고, 회사를 세운다</h2>
-      <p>함대를 건조해 NPC 세력을 몰아내고 다른 제국의 행성을 약탈하세요. 혼자가 버거우면
-      회사(길드)를 세워 동맹을 맺고, 공동 연구로 함께 강해집니다. 은하의 정치는
-      플레이어가 만듭니다.</p>
+  <section class="serantum-shell statement" aria-labelledby="statement-title">
+    <p class="eyebrow">ONE GALAXY. NO RESET.</p>
+    <div>
+      <h2 id="statement-title">서버가 닫히면 사라지는 왕국은 만들고 싶지 않았습니다.</h2>
+      <p class="statement__body">세란텀의 좌표는 은하 전체에서 단 하나입니다. 좋은 행성은 한정되어 있고, 먼저 발견한 이름과 먼저 세운 전초기지는 그대로 역사가 됩니다. 이곳의 정치는 시스템이 아니라 플레이어가 만듭니다.</p>
     </div>
-  </div>
+  </section>
 
-  <h2 style="margin-top:56px">이런 게임입니다</h2>
-  <div class="grid">
-    <div class="cell"><strong>⛏️ 9종 자원 경제</strong><span>광물부터 공허수정까지 — 캐고, 정제하고, 지킨다</span></div>
-    <div class="cell"><strong>🔭 탐사와 전장의 안개</strong><span>밝히기 전까지 은하는 미지의 영역</span></div>
-    <div class="cell"><strong>🧪 계정 연구</strong><span>스킬북으로 쌓는 영구 성장 — 행성을 잃어도 연구는 남는다</span></div>
-    <div class="cell"><strong>🛡️ 약탈과 방어</strong><span>자원창고로 지키고, 보험으로 대비하고, 함대로 되갚는다</span></div>
-    <div class="cell"><strong>🤝 회사·동맹·외교</strong><span>공동 연구, 자원 지원, 동맹 채팅</span></div>
-    <div class="cell"><strong>📱 가로 한 화면</strong><span>모바일에 맞춘 조작 — 출퇴근 5분이면 제국이 굴러간다</span></div>
-  </div>
+  <section class="serantum-shell chapters" aria-label="주요 플레이">
+    <article class="chapter">
+      <span class="chapter__number">01 / BUILD</span>
+      <h3>행성을 가동한다</h3>
+      <p>광산, 정제소, 조선소를 배치해 생산망을 만드세요. 벨트는 계속 돌고, 다음 함대를 위한 자원은 쌓입니다.</p>
+    </article>
+    <article class="chapter">
+      <span class="chapter__number">02 / CLAIM</span>
+      <h3>좌표를 선점한다</h3>
+      <p>전장의 안개 너머로 탐사선을 보내고 스타레인을 밝히세요. 발견한 항성계는 다음 경쟁의 출발점이 됩니다.</p>
+    </article>
+    <article class="chapter">
+      <span class="chapter__number">03 / CONQUER</span>
+      <h3>함대를 움직인다</h3>
+      <p>NPC 세력을 밀어내고 적의 보급선을 끊으세요. 혼자 감당할 수 없는 전선은 회사와 동맹이 이어받습니다.</p>
+    </article>
+  </section>
 
-  <div class="cta">
-    <h2 style="border:none;padding:0">지금은 출시 준비 중</h2>
-    <p style="color:var(--muted)">Google Play · App Store 동시 출시를 준비하고 있습니다.</p>
-    <a class="btn ghost" href="/support/">문의하기</a>
-  </div>
+  <section class="serantum-shell systems" aria-labelledby="systems-title">
+    <div class="systems__head">
+      <h2 id="systems-title">제국은 전투 밖에서도 자랍니다.</h2>
+      <p>짧게 접속해도 할 일이 있고, 자리를 비워도 다음 선택은 준비됩니다.</p>
+    </div>
+    <div class="system">
+      <span class="system__index">01</span>
+      <h3>9종 자원 경제</h3>
+      <p>광물부터 공허수정까지. 채굴하고, 정제하고, 필요한 곳으로 옮깁니다.</p>
+    </div>
+    <div class="system">
+      <span class="system__index">02</span>
+      <h3>영구 계정 연구</h3>
+      <p>행성을 잃어도 연구는 남습니다. 패배는 끝이 아니라 다음 개척을 위한 데이터가 됩니다.</p>
+    </div>
+    <div class="system">
+      <span class="system__index">03</span>
+      <h3>약탈과 방어</h3>
+      <p>자원창고와 보험으로 손실을 줄이고, 상대의 빈틈에는 준비한 함대로 답합니다.</p>
+    </div>
+    <div class="system">
+      <span class="system__index">04</span>
+      <h3>회사와 외교</h3>
+      <p>공동 연구, 자원 지원, 동맹 채팅. 혼자 만든 기지는 함께 만든 세력권으로 확장됩니다.</p>
+    </div>
+  </section>
 
+  <section class="serantum-shell launch" aria-labelledby="launch-title">
+    <div>
+      <p class="eyebrow">TRANSMISSION PENDING</p>
+      <h2 id="launch-title">출시 신호를<br>준비하고 있습니다.</h2>
+      <p>Google Play · App Store 동시 출시 예정</p>
+    </div>
+    <a class="launch__link" href="/support/"><span>개발팀에 문의하기</span><span aria-hidden="true">↗</span></a>
+  </section>
 </main>
 
 <footer>
