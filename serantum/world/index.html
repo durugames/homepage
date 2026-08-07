@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07090b">
+<title>세란텀 세계관 | 두루게임즈</title>
+<meta name="description" content="침묵의 날과 대봉인, 그리고 성력 641년 재개척 시대까지. 세란텀 은하의 역사와 세력을 소개합니다.">
+<meta property="og:title" content="세란텀 세계관 — 은하는 한 번 죽었다">
+<meta property="og:description" content="무너진 은하를 되찾으러 나가는 재개척 시대의 기록.">
+<meta property="og:image" content="https://durugames.com/assets/serantum-world-hero.jpg">
+<link rel="preload" as="image" href="/assets/serantum-world-hero.jpg" fetchpriority="high">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/style.css">
+<style>
+:root {
+  --ser-bg: #07090b;
+  --ser-ink: #f0f0eb;
+  --ser-dim: #8f9498;
+  --ser-line: rgba(240, 240, 235, 0.18);
+  --ser-mark: #d89a45;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--ser-bg);
+  background-image: linear-gradient(rgba(7, 9, 11, 0.86), rgba(7, 9, 11, 0.96)), url("/assets/serantum-sections-v2.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: var(--ser-ink);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+main { padding: 0; }
+
+header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 10;
+  border: 0;
+  background: linear-gradient(#07090b, transparent);
+  backdrop-filter: none;
+}
+
+header .wrap,
+.world-shell {
+  width: min(100% - 48px, 1120px);
+  max-width: none;
+  margin-inline: auto;
+  padding: 0;
+}
+
+header .wrap { height: 72px; }
+.logo span, nav a:hover { color: var(--ser-mark); }
+nav a { color: rgba(240, 240, 235, 0.72); }
+nav a[aria-current="page"] { color: #fff; }
+
+.eyebrow {
+  margin: 0 0 20px;
+  color: var(--ser-mark);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.world-hero {
+  position: relative;
+  min-height: min(880px, 100svh);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.world-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(5, 7, 8, 0.95) 0%, rgba(5, 7, 8, 0.62) 42%, rgba(5, 7, 8, 0.04) 76%),
+    linear-gradient(0deg, var(--ser-bg) 0%, transparent 38%);
+}
+
+.world-hero__art {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.world-hero__content { padding: 160px 0 94px; }
+
+.world-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(3.5rem, 8.5vw, 7rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.075em;
+}
+
+.world-hero__lead {
+  max-width: 560px;
+  margin: 34px 0 0;
+  color: rgba(240, 240, 235, 0.76);
+  font-size: clamp(1rem, 1.8vw, 1.14rem);
+  line-height: 1.75;
+}
+
+.world-hero__link {
+  display: inline-flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 28px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--ser-line);
+  color: var(--ser-ink);
+  font-size: 0.86rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.world-hero__link:hover { color: var(--ser-mark); }
+
+.archive-strip { border-block: 1px solid var(--ser-line); }
+.archive-strip .world-shell { display: grid; grid-template-columns: repeat(3, 1fr); }
+
+.archive-signal {
+  min-height: 138px;
+  padding: 30px 36px;
+  border-right: 1px solid var(--ser-line);
+}
+
+.archive-signal:first-child { padding-left: 0; }
+.archive-signal:last-child { padding-right: 0; border-right: 0; }
+.archive-signal b { display: block; font-size: 2.2rem; line-height: 1; letter-spacing: -0.05em; }
+.archive-signal span { display: block; margin-top: 10px; color: var(--ser-dim); font-size: 0.8rem; }
+
+.world-intro {
+  display: grid;
+  grid-template-columns: 0.6fr 1.4fr;
+  gap: 64px;
+  padding: 150px 0 140px;
+}
+
+.world-intro h2,
+.section-head h2,
+.unknowns h2,
+.world-close h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--ser-ink);
+  font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.06em;
+}
+
+.world-intro__copy { max-width: 650px; margin-top: 38px; color: var(--ser-dim); }
+.world-intro__copy p { color: inherit; font-size: 1rem; }
+
+.chronicle { padding-bottom: 150px; }
+.section-head { display: flex; justify-content: space-between; gap: 40px; align-items: end; margin-bottom: 56px; }
+.section-head p { max-width: 430px; margin: 0; color: var(--ser-dim); }
+
+.chronicle__row {
+  display: grid;
+  grid-template-columns: 110px 0.55fr 1.45fr;
+  gap: 28px;
+  align-items: baseline;
+  padding: 30px 0;
+  border-top: 1px solid var(--ser-line);
+}
+
+.chronicle__row:last-child { border-bottom: 1px solid var(--ser-line); }
+.chronicle__year { color: var(--ser-mark); font: 650 0.76rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.1em; }
+.chronicle__row h3 { margin: 0; color: var(--ser-ink); font-size: 1.12rem; }
+.chronicle__row p { margin: 0; color: var(--ser-dim); font-size: 0.92rem; }
+
+.zones { padding: 140px 0; border-block: 1px solid var(--ser-line); }
+.zones__grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 64px; border-block: 1px solid var(--ser-line); }
+
+.zone {
+  min-height: 360px;
+  padding: 38px 34px 42px;
+  border-right: 1px solid var(--ser-line);
+  background: linear-gradient(180deg, rgba(216, 154, 69, 0.05), transparent 46%);
+}
+
+.zone:first-child { padding-left: 0; }
+.zone:last-child { padding-right: 0; border-right: 0; }
+.zone__number { color: var(--ser-mark); font: 650 0.74rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.12em; }
+.zone h3 { margin: 76px 0 8px; color: var(--ser-ink); font-size: 1.8rem; letter-spacing: -0.04em; }
+.zone h3 span { display: block; margin-top: 8px; color: var(--ser-dim); font: 600 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.12em; }
+.zone p { margin: 24px 0 0; color: var(--ser-dim); font-size: 0.92rem; }
+
+.factions { padding: 150px 0; }
+.factions__grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--ser-line); }
+
+.faction {
+  min-height: 270px;
+  padding: 34px 38px 40px 0;
+  border-right: 1px solid var(--ser-line);
+  border-bottom: 1px solid var(--ser-line);
+}
+
+.faction:nth-child(even) { padding-right: 0; padding-left: 38px; border-right: 0; }
+.faction__type { color: var(--ser-mark); font: 650 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.12em; }
+.faction h3 { margin: 54px 0 16px; color: var(--ser-ink); font-size: 1.45rem; letter-spacing: -0.03em; }
+.faction p { margin: 0; color: var(--ser-dim); font-size: 0.92rem; }
+
+.unknowns { padding: 140px 0; border-top: 1px solid var(--ser-line); }
+.unknowns__list { margin: 64px 0 0; padding: 0; list-style: none; counter-reset: mystery; }
+.unknowns__list li {
+  counter-increment: mystery;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  padding: 26px 0;
+  border-top: 1px solid var(--ser-line);
+  color: var(--ser-ink);
+  font-size: 1.05rem;
+}
+
+.unknowns__list li::before {
+  content: "0" counter(mystery);
+  color: var(--ser-mark);
+  font: 650 0.72rem/1.7 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.12em;
+}
+
+.unknowns__list li:last-child { border-bottom: 1px solid var(--ser-line); }
+
+.world-close {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 80px;
+  align-items: end;
+  padding: 100px 0;
+  border-top: 1px solid var(--ser-line);
+}
+
+.world-close p { margin: 24px 0 0; color: var(--ser-dim); }
+.world-close__link { display: flex; justify-content: space-between; gap: 24px; padding: 18px 0; border-block: 1px solid var(--ser-line); color: var(--ser-ink); text-decoration: none; font-size: 0.88rem; }
+.world-close__link:hover { color: var(--ser-mark); }
+
+footer { border-color: var(--ser-line); }
+footer .wrap { width: min(100% - 48px, 1120px); max-width: none; padding: 0; }
+
+@media (max-width: 760px) {
+  header .wrap,
+  .world-shell,
+  footer .wrap { width: min(100% - 36px, 1120px); }
+  header .wrap { height: 64px; }
+  nav a { margin-left: 14px; }
+  nav a:nth-child(n + 3) { display: none; }
+  .world-hero { min-height: 720px; }
+  .world-hero::after { background: linear-gradient(0deg, var(--ser-bg) 2%, rgba(5, 7, 8, 0.18) 64%, rgba(5, 7, 8, 0.72) 100%); }
+  .world-hero__art { object-position: 64% center; }
+  .world-hero__content { padding: 130px 0 72px; }
+  .world-hero h1 { max-width: 540px; font-size: clamp(3.15rem, 15vw, 5.2rem); }
+  .archive-strip .world-shell { grid-template-columns: 1fr; }
+  .archive-signal, .archive-signal:first-child, .archive-signal:last-child { min-height: auto; padding: 22px 0; border-right: 0; border-bottom: 1px solid var(--ser-line); }
+  .archive-signal:last-child { border-bottom: 0; }
+  .archive-signal b { font-size: 1.7rem; }
+  .world-intro { grid-template-columns: 1fr; gap: 28px; padding: 100px 0; }
+  .world-intro__copy { margin-top: 26px; }
+  .chronicle { padding-bottom: 100px; }
+  .section-head { display: block; margin-bottom: 40px; }
+  .section-head p { margin-top: 20px; }
+  .chronicle__row { grid-template-columns: 62px 1fr; gap: 12px 16px; }
+  .chronicle__row p { grid-column: 2; }
+  .zones { padding: 100px 0; }
+  .zones__grid { grid-template-columns: 1fr; margin-top: 44px; }
+  .zone, .zone:first-child, .zone:last-child { min-height: auto; padding: 34px 0 40px; border-right: 0; border-bottom: 1px solid var(--ser-line); }
+  .zone:last-child { border-bottom: 0; }
+  .zone h3 { margin-top: 46px; }
+  .factions { padding: 100px 0; }
+  .factions__grid { grid-template-columns: 1fr; }
+  .faction, .faction:nth-child(even) { min-height: auto; padding: 34px 0 40px; border-right: 0; }
+  .faction h3 { margin-top: 44px; }
+  .unknowns { padding: 100px 0; }
+  .unknowns__list { margin-top: 44px; }
+  .unknowns__list li { grid-template-columns: 48px 1fr; gap: 14px; }
+  .world-close { grid-template-columns: 1fr; gap: 48px; padding: 72px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="/">DURU<span>GAMES</span></a>
+    <nav aria-label="주요 메뉴">
+      <a href="/serantum/">게임</a>
+      <a href="/serantum/world/" aria-current="page">세계관</a>
+      <a href="/support/">고객지원</a>
+      <a href="/terms/">이용약관</a>
+      <a href="/privacy/">개인정보처리방침</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="world-hero" aria-labelledby="world-title">
+    <img class="world-hero__art" src="/assets/serantum-world-hero.jpg" alt="해체된 궤도 도시의 잔해로 심연을 향한 구조물을 세우는 코어본 함대" width="1915" height="821" fetchpriority="high">
+    <div class="world-shell world-hero__content">
+      <p class="eyebrow">SERANTUM / WORLD ARCHIVE</p>
+      <h1 id="world-title">은하는 한 번 죽었다.</h1>
+      <p class="world-hero__lead">성력 302년, 모든 공허동력이 정확히 3분 동안 멈췄습니다. 전력이 돌아왔을 때 코어본은 도시를 해체해 심연을 향한 무언가를 짓기 시작했습니다.</p>
+      <a class="world-hero__link" href="#chronicle"><span>기록 열람하기</span><span aria-hidden="true">↓</span></a>
+    </div>
+  </section>
+
+  <section class="archive-strip" aria-label="세계관 핵심 연도">
+    <div class="world-shell">
+      <div class="archive-signal"><b>302</b><span>침묵의 날</span></div>
+      <div class="archive-signal"><b>309</b><span>수도 아스트라 프라임 대봉인</span></div>
+      <div class="archive-signal"><b>641</b><span>재개척 시대의 현재</span></div>
+    </div>
+  </section>
+
+  <section class="world-shell world-intro" aria-labelledby="intro-title">
+    <p class="eyebrow">THE RECLAMATION</p>
+    <div>
+      <h2 id="intro-title">지금은 그 은하를 되찾으러 나가는 시대입니다.</h2>
+      <div class="world-intro__copy">
+        <p>수도와 항로를 잃은 생존자들은 중심부의 짧은 레인에 의지해 두 세기를 버텼습니다. 성역이 다시 불을 밝힌 뒤, 재개척 헌장에 서명한 사령관들은 모성 하나와 낡은 지휘통제소를 받았습니다.</p>
+        <p>사령관들이 향하는 곳에는 더 좋은 행성과 옛 기술만 있는 것이 아닙니다. 먼저 살아남은 세력과 멈춰 선 코어본, 그리고 침묵이 시작된 심연이 기다리고 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="chronicle" class="world-shell chronicle" aria-labelledby="chronicle-title">
+    <div class="section-head">
+      <h2 id="chronicle-title">세란텀 연대기</h2>
+      <p>통합의 약속으로 시작된 은하는 오염과 붕괴를 지나 다시 바깥을 향하고 있습니다.</p>
+    </div>
+    <div class="chronicle__row">
+      <span class="chronicle__year">성력 1</span>
+      <h3>테라니스 협약</h3>
+      <p>중심부 항성 문명들이 통합 정부를 세우고 은하에 세란텀이라는 이름을 부여합니다.</p>
+    </div>
+    <div class="chronicle__row">
+      <span class="chronicle__year">성력 244</span>
+      <h3>공허수정 발견</h3>
+      <p>외곽의 떠돌이 천체에서 막대한 에너지를 품은 결정이 발견됩니다. 코어본은 정제하지 않은 원석을 동력계에 사용하기 시작합니다.</p>
+    </div>
+    <div class="chronicle__row">
+      <span class="chronicle__year">성력 302</span>
+      <h3>침묵의 날</h3>
+      <p>공허동력 계통이 은하 전역에서 3분간 멈춥니다. 나흘째, 코어본은 도시를 점령하는 대신 해체하기 시작합니다.</p>
+    </div>
+    <div class="chronicle__row">
+      <span class="chronicle__year">성력 309</span>
+      <h3>대봉인</h3>
+      <p>테라니스는 함락 직전의 수도와 공허수정 금고를 항로째 봉쇄합니다. 정부는 사라지고 은하는 대암흑기에 들어갑니다.</p>
+    </div>
+    <div class="chronicle__row">
+      <span class="chronicle__year">성력 522</span>
+      <h3>성역 재점화</h3>
+      <p>중심부 생존 성계들이 두 세기 만에 첫 성계 간 스타레인을 되살립니다. 안전 항로권은 성역이라 불리기 시작합니다.</p>
+    </div>
+    <div class="chronicle__row">
+      <span class="chronicle__year">성력 641</span>
+      <h3>재개척 시대</h3>
+      <p>새 세대의 사령관들이 봉인된 수도를 등 뒤에 두고 변경과 심연으로 나아갑니다.</p>
+    </div>
+  </section>
+
+  <section class="zones" aria-labelledby="zones-title">
+    <div class="world-shell">
+      <div class="section-head">
+        <h2 id="zones-title">세 개의 은하</h2>
+        <p>하나의 세란텀이지만, 항로의 상태와 재개척 정도에 따라 삶의 모습은 완전히 달라집니다.</p>
+      </div>
+      <div class="zones__grid">
+        <article class="zone">
+          <span class="zone__number">01 / INNER</span>
+          <h3>성역<span>SANCTUM</span></h3>
+          <p>재점화된 항로와 헌장법이 닿는 중심부입니다. 안전하지만 오래 개발되어 손쉬운 자원은 대부분 소진됐습니다.</p>
+        </article>
+        <article class="zone">
+          <span class="zone__number">02 / FRONTIER</span>
+          <h3>변경<span>FRONTIER</span></h3>
+          <p>새 항로와 폐허가 매일 발견되는 개척지입니다. 헌장의 소유권과 오래된 생존자의 권리가 가장 자주 충돌합니다.</p>
+        </article>
+        <article class="zone">
+          <span class="zone__number">03 / OUTER</span>
+          <h3>심연<span>ABYSS</span></h3>
+          <p>공허수정 이상 지대와 코어본의 정지선이 남은 최외곽입니다. 더 큰 기회와 아직 이름 붙지 않은 위험이 함께 있습니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="world-shell factions" aria-labelledby="factions-title">
+    <div class="section-head">
+      <h2 id="factions-title">먼저 살아남은 자들</h2>
+      <p>세력은 선악보다 필요와 원한으로 움직입니다. 오늘의 적이 다음 성계에서는 거래 상대가 되기도 합니다.</p>
+    </div>
+    <div class="factions__grid">
+      <article class="faction">
+        <span class="faction__type">MINING CARTEL</span>
+        <h3>철환 카르텔</h3>
+        <p>변경의 광산과 정련소를 계약서로 지배합니다. 사령관을 침입자가 아니라 경쟁 사업자로 봅니다.</p>
+      </article>
+      <article class="faction">
+        <span class="faction__type">RAIDER FLEET</span>
+        <h3>잿빛 무리</h3>
+        <p>버림받은 식민 선단의 후손입니다. 정착지를 약탈하면서도 표류자와 탈영병을 받아들입니다.</p>
+      </article>
+      <article class="faction">
+        <span class="faction__type">NOMAD FLOTILLA</span>
+        <h3>성운 유랑단</h3>
+        <p>지도에 없는 채집 항로를 따라 이동합니다. 그들은 침묵의 날보다 13년 먼저 심연을 떠났습니다.</p>
+      </article>
+      <article class="faction">
+        <span class="faction__type">QUARANTINE FORCE</span>
+        <h3>테라니스 잔존군</h3>
+        <p>끝난 적 없는 전쟁의 명령을 수행합니다. 재개척 헌장을 무허가 행정으로 보고 심연을 봉쇄합니다.</p>
+      </article>
+      <article class="faction">
+        <span class="faction__type">VOID PILGRIMS</span>
+        <h3>보이드 순례자단</h3>
+        <p>심연의 유물이 내는 공명을 첫 소절이라 부릅니다. 그들에게 3분의 침묵은 노래 앞의 숨고르기였습니다.</p>
+      </article>
+      <article class="faction">
+        <span class="faction__type">AUTONOMOUS MACHINES</span>
+        <h3>코어본 기계군</h3>
+        <p>도시를 해체해 심연을 향한 구조물을 세웠습니다. 성력 460년 이후 확장을 멈춘 채 무언가를 기다립니다.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="world-shell unknowns" aria-labelledby="unknowns-title">
+    <p class="eyebrow">UNRESOLVED SIGNALS</p>
+    <h2 id="unknowns-title">아직 답하지 못한 것들</h2>
+    <ol class="unknowns__list">
+      <li>심연 너머, 코어본 구조물이 가리키는 한 점에는 무엇이 있는가.</li>
+      <li>은하 전체를 멈춘 3분의 침묵은 무엇이었는가.</li>
+      <li>성운 유랑단은 침묵의 날 이전에 무엇을 보았는가.</li>
+      <li>코어본은 왜 멈췄으며 무엇을 기다리고 있는가.</li>
+      <li>332년째 봉인된 아스트라 프라임 안에는 무엇이 남아 있는가.</li>
+    </ol>
+  </section>
+
+  <section class="world-shell world-close" aria-labelledby="close-title">
+    <div>
+      <p class="eyebrow">ASTRA DOMINION</p>
+      <h2 id="close-title">이제, 당신의 항로를 정할 차례입니다.</h2>
+      <p>성역에서 시작해 변경을 지나 심연으로 향하세요.</p>
+    </div>
+    <a class="world-close__link" href="/serantum/"><span>게임 소개로 돌아가기</span><span aria-hidden="true">→</span></a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="/terms/">이용약관</a> · <a href="/privacy/">개인정보처리방침</a> · <a href="/operation/">운영정책</a> ·
+    <a href="/delete/">계정 삭제</a> · <a href="/support/">고객지원</a><br>
+    © 2026 DURU GAMES. All rights reserved.
+  </div>
+</footer>
+</body>
+</html>
