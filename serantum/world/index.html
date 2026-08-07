@@ -136,14 +136,19 @@ nav a[aria-current="page"] { color: #fff; }
 .archive-note p { margin: 0; color: var(--ser-ink); font-size: clamp(1.35rem, 2.6vw, 2rem); line-height: 1.5; letter-spacing: -0.035em; }
 .archive-note cite { color: var(--ser-dim); font-size: 0.78rem; font-style: normal; line-height: 1.7; }
 
-.world-intro {
+.world-intro,
+.seal-note {
   display: grid;
   grid-template-columns: 0.6fr 1.4fr;
   gap: 64px;
+}
+
+.world-intro {
   padding: 150px 0 140px;
 }
 
 .world-intro h2,
+.seal-note h2,
 .section-head h2,
 .unknowns h2,
 .world-close h2 {
@@ -159,6 +164,7 @@ nav a[aria-current="page"] { color: #fff; }
 .world-intro__mark { margin: 8px 0 0; color: var(--ser-mark); font-size: 0.8rem; font-weight: 650; line-height: 1.7; }
 .world-intro__copy { max-width: 650px; margin-top: 38px; color: var(--ser-dim); }
 .world-intro__copy p { color: inherit; font-size: 1rem; }
+.seal-note { padding: 0 0 150px; }
 
 .chronicle { padding-bottom: 150px; }
 .section-head { display: flex; justify-content: space-between; gap: 40px; align-items: end; margin-bottom: 56px; }
@@ -199,16 +205,20 @@ nav a[aria-current="page"] { color: #fff; }
 .factions__grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--ser-line); }
 
 .faction {
+  position: relative;
   min-height: 270px;
   padding: 34px 38px 40px 0;
   border-right: 1px solid var(--ser-line);
   border-bottom: 1px solid var(--ser-line);
+  overflow: hidden;
 }
 
 .faction:nth-child(even) { padding-right: 0; padding-left: 38px; border-right: 0; }
+.faction__type, .faction h3, .faction p { position: relative; z-index: 1; }
 .faction__type { color: var(--ser-mark); font-size: 0.74rem; font-weight: 650; }
 .faction h3 { margin: 54px 0 16px; color: var(--ser-ink); font-size: 1.45rem; letter-spacing: -0.03em; }
-.faction p { margin: 0; color: var(--ser-dim); font-size: 0.92rem; }
+.faction p { max-width: 72%; margin: 0; color: var(--ser-dim); font-size: 0.92rem; }
+.faction__ship { position: absolute; right: 10px; bottom: -22px; width: min(44%, 220px); height: auto; opacity: 0.17; filter: saturate(0.7); pointer-events: none; }
 
 .unknowns { padding: 140px 0; border-top: 1px solid var(--ser-line); }
 .unknowns__copy { max-width: 900px; margin: 54px 0 0; color: rgba(240, 240, 235, 0.76); font-size: clamp(1.12rem, 2vw, 1.45rem); line-height: 1.9; letter-spacing: -0.025em; }
@@ -243,7 +253,10 @@ footer .production-note { margin: 12px 0 0; color: var(--ser-dim); font-size: 0.
   .world-hero__content { padding: 130px 0 72px; }
   .world-hero h1 { max-width: 540px; font-size: clamp(3.15rem, 15vw, 5.2rem); }
   .archive-note { grid-template-columns: 1fr; gap: 18px; padding: 38px 0; }
-  .world-intro { grid-template-columns: 1fr; gap: 28px; padding: 100px 0; }
+  .world-intro,
+  .seal-note { grid-template-columns: 1fr; gap: 28px; }
+  .world-intro { padding: 100px 0; }
+  .seal-note { padding-bottom: 100px; }
   .world-intro__copy { margin-top: 26px; }
   .chronicle { padding-bottom: 100px; }
   .section-head { display: block; margin-bottom: 40px; }
@@ -259,6 +272,8 @@ footer .production-note { margin: 12px 0 0; color: var(--ser-dim); font-size: 0.
   .factions__grid { grid-template-columns: 1fr; }
   .faction, .faction:nth-child(even) { min-height: auto; padding: 34px 0 40px; border-right: 0; }
   .faction h3 { margin-top: 44px; }
+  .faction p { max-width: 76%; }
+  .faction__ship { right: -10px; bottom: -8px; width: 150px; opacity: 0.13; }
   .unknowns { padding: 100px 0; }
   .unknowns__copy { margin-top: 38px; }
   .world-close { grid-template-columns: 1fr; gap: 48px; padding: 72px 0; }
@@ -312,15 +327,47 @@ footer .production-note { margin: 12px 0 0; color: var(--ser-dim); font-size: 0.
     </div>
   </section>
 
+  <section class="world-shell seal-note" aria-labelledby="seal-title">
+    <p class="world-intro__mark">성력 309년<br>최후의 명령</p>
+    <div>
+      <h2 id="seal-title">대봉인은 무엇을 막았나</h2>
+      <div class="world-intro__copy">
+        <p>침묵의 날 이후 코어본은 정거장과 도시를 뜯어 공허수정을 모았다. 그들이 향한 곳은 아스트라 프라임 지하의 에테르 준비은행, 은하 최대의 원석 저장고였다. 모든 스타레인이 수도를 향하도록 설계된 탓에 평화기의 교통망은 그대로 기계군의 진격로가 됐다.</p>
+        <p>성력 309년 수도 방위선이 무너지자 테라니스 최후의 명령은 철수가 아니라 검역이었다. 수도와 금고, 코어본 선봉, 미처 빠져나오지 못한 시민들을 항로째 봉쇄했다. 대봉인은 수도를 지킨 장벽이 아니라, 함락된 수도를 통째로 묻어 재앙을 가둔 조치였다.</p>
+        <p>봉인 직후 은하 전역의 코어본은 전진을 멈췄다. 목표를 잃어서인지, 다른 신호를 들었는지는 아직 모른다.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="chronicle" class="world-shell chronicle" aria-labelledby="chronicle-title">
     <div class="section-head">
       <h2 id="chronicle-title">세란텀 연대기</h2>
       <p>침묵의 날 전후로 사라진 기록이 많다. 아래 사건들은 서로 다른 생존 기록에서도 날짜가 일치한다.</p>
     </div>
     <div class="chronicle__row">
-      <span class="chronicle__year">성력 244</span>
-      <h3>공허수정 발견</h3>
-      <p>외곽의 떠돌이 천체에서 막대한 에너지를 품은 결정이 발견됐다. 코어본은 정제하지 않은 원석을 동력계에 사용하기 시작했다.</p>
+      <span class="chronicle__year">성력 1</span>
+      <h3>테라니스 협약</h3>
+      <p>중심부 항성 문명들이 통합 정부를 세우고 은하에 세란텀이라는 이름을 붙였다. 옛말로 ‘요람’이라는 뜻이었다.</p>
+    </div>
+    <div class="chronicle__row">
+      <span class="chronicle__year">성력 76</span>
+      <h3>스타레인 대간선</h3>
+      <p>은하의 항로망이 완성됐다. 모든 레인은 결국 수도 아스트라 프라임을 향했다. 번영을 만든 구조는 훗날 기계군의 가장 빠른 진격로가 됐다.</p>
+    </div>
+    <div class="chronicle__row">
+      <span class="chronicle__year">성력 244–267</span>
+      <h3>공허수정의 시대</h3>
+      <p>외곽에서 막대한 에너지를 품은 결정이 발견됐다. 코어본은 원석을 동력계에 사용했고, 테라니스는 에테르 결제의 담보라는 명목으로 수도 지하에 원석을 쌓기 시작했다.</p>
+    </div>
+    <div class="chronicle__row">
+      <span class="chronicle__year">성력 289</span>
+      <h3>선견자들의 이탈</h3>
+      <p>훗날 성운 유랑단의 중심이 되는 선단들이 아무 설명 없이 심연의 채집 항로를 버렸다. 침묵의 날보다 13년 앞선 일이었다.</p>
+    </div>
+    <div class="chronicle__row">
+      <span class="chronicle__year">성력 298</span>
+      <h3>전조</h3>
+      <p>최외곽 전초기지들이 하나씩 침묵했다. 기지 부품으로 만든 정체불명의 구조물은 모두 심연 너머의 같은 한 점을 향했다. 테라니스는 조사 결과를 봉인하고 시추량을 늘렸다.</p>
     </div>
     <div class="chronicle__row">
       <span class="chronicle__year">성력 302</span>
@@ -330,7 +377,17 @@ footer .production-note { margin: 12px 0 0; color: var(--ser-dim); font-size: 0.
     <div class="chronicle__row">
       <span class="chronicle__year">성력 309</span>
       <h3>대봉인</h3>
-      <p>테라니스는 함락 직전의 수도와 공허수정 금고를 항로째 봉쇄했다. 정부는 사라졌고, 은하는 대암흑기에 들어갔다.</p>
+      <p>테라니스는 함락된 수도와 공허수정 금고를 코어본 선봉, 남은 시민들과 함께 항로째 봉쇄했다. 정부는 사라졌고 은하는 대암흑기에 들어갔다.</p>
+    </div>
+    <div class="chronicle__row">
+      <span class="chronicle__year">성력 407</span>
+      <h3>첫 소절</h3>
+      <p>난민 선단이 심연의 이상 지대에서 노래하는 유물을 발견했다. 3분의 침묵을 ‘노래 앞의 숨고르기’라 믿는 이들이 보이드 순례자단으로 모였다.</p>
+    </div>
+    <div class="chronicle__row">
+      <span class="chronicle__year">성력 460</span>
+      <h3>코어본의 정지</h3>
+      <p>기계군이 모든 확장과 건설을 동시에 멈췄다. 구조물이 완성된 것인지, 무언가를 기다리는 것인지는 모른다. 순찰과 방어 활동은 지금도 계속된다.</p>
     </div>
     <div class="chronicle__row">
       <span class="chronicle__year">성력 522</span>
@@ -341,6 +398,11 @@ footer .production-note { margin: 12px 0 0; color: var(--ser-dim); font-size: 0.
       <span class="chronicle__year">성력 601</span>
       <h3>재개척 헌장</h3>
       <p>성역 정부·보험조합·조선 길드가 사령관 제도를 시작했다. 헌장의 마지막 당부는 짧았다. “이번에는 준비된 채로 마주하라.”</p>
+    </div>
+    <div class="chronicle__row">
+      <span class="chronicle__year">성력 641</span>
+      <h3>재개척 시대의 현재</h3>
+      <p>새 세대의 사령관들이 모성을 받고 변경과 심연으로 나아간다. 성역 한가운데에서는 스스로 묻힌 수도가 332년째 침묵하고 있다.</p>
     </div>
   </section>
 
@@ -377,31 +439,37 @@ footer .production-note { margin: 12px 0 0; color: var(--ser-dim); font-size: 0.
     </div>
     <div class="factions__grid">
       <article class="faction">
+        <img class="faction__ship" src="/assets/serantum-factions/iron-ring.png" alt="" width="256" height="256" loading="lazy" decoding="async">
         <span class="faction__type">계약서가 법을 대신한 곳에서</span>
         <h3>철환 카르텔</h3>
         <p>변경의 광산과 정련소를 계약서로 지배한다. 현장에서 포문을 열고도 다음 성계의 교섭소에서는 태연히 청구서를 내민다.</p>
       </article>
       <article class="faction">
+        <img class="faction__ship" src="/assets/serantum-factions/ashen-swarm.png" alt="" width="256" height="256" loading="lazy" decoding="async">
         <span class="faction__type">같은 부품이 두 개 없는 함대</span>
         <h3>잿빛 무리</h3>
         <p>버림받은 식민 선단의 후손. 정착지를 약탈하고 표류자를 받아들인다. 포로 교환과 난파선 인양 협상만큼은 뜻밖에도 정확하다.</p>
       </article>
       <article class="faction">
+        <img class="faction__ship" src="/assets/serantum-factions/nebula-nomads.png" alt="" width="256" height="256" loading="lazy" decoding="async">
         <span class="faction__type">지도에 없는 길의 주인</span>
         <h3>성운 유랑단</h3>
         <p>성역 지도에 없는 채집 항로를 따라 이동한다. 침묵의 날보다 13년 먼저 심연을 떠났고, 무엇을 보았는지는 지금도 말하지 않는다.</p>
       </article>
       <article class="faction">
+        <img class="faction__ship" src="/assets/serantum-factions/terranis-remnant.png" alt="" width="256" height="256" loading="lazy" decoding="async">
         <span class="faction__type">끝나지 않은 검역</span>
         <h3>테라니스 잔존군</h3>
         <p>전쟁은 끝난 것이 아니라 서명할 정부가 사라졌을 뿐이라고 믿는다. 재개척 헌장을 무허가 행정으로 보고 심연을 봉쇄한다.</p>
       </article>
       <article class="faction">
+        <img class="faction__ship" src="/assets/serantum-factions/void-pilgrims.png" alt="" width="256" height="256" loading="lazy" decoding="async">
         <span class="faction__type">노래를 기다리는 자들</span>
         <h3>보이드 순례자단</h3>
         <p>심연의 유물이 내는 공명을 ‘첫 소절’이라 부른다. 그들에게 3분의 침묵은 노래 앞의 숨고르기였다.</p>
       </article>
       <article class="faction">
+        <img class="faction__ship" src="/assets/serantum-factions/coreborn.png" alt="" width="256" height="256" loading="lazy" decoding="async">
         <span class="faction__type">처음 오염된 기계들</span>
         <h3>코어본 기계군</h3>
         <p>도시를 해체해 심연을 향한 구조물을 세웠다. 성력 460년, 모든 확장을 멈췄다. 순찰과 방어는 아직도 계속된다.</p>
