@@ -33,12 +33,82 @@
   <div class="card">
     <h2>방법 2 — 웹으로 삭제 요청</h2>
     <p>앱을 삭제했거나 게임에 접속할 수 없는 경우, 아래 양식으로 삭제를 요청할 수 있습니다.
-    접수 후 계정 확인을 거쳐 처리되며, 결과를 이메일로 안내합니다.</p>
-    <a class="btn" href="mailto:support@durugames.com?subject=%5B%EC%84%B8%EB%9E%80%ED%85%80%5D%20%EA%B3%84%EC%A0%95%20%EC%82%AD%EC%A0%9C%20%EC%9A%94%EC%B2%AD&amp;body=%EA%B2%8C%EC%9E%84%20%EB%8B%89%EB%84%A4%EC%9E%84%3A%20%0A%EA%B3%84%EC%A0%95%20UID%28%EA%B2%8C%EC%9E%84%20%EB%82%B4%20%EC%84%A4%EC%A0%95%20%ED%99%94%EB%A9%B4%EC%97%90%EC%84%9C%20%ED%99%95%EC%9D%B8%29%3A%20%0A%ED%9A%8C%EC%8B%A0%EB%B0%9B%EC%9D%84%20%EC%9D%B4%EB%A9%94%EC%9D%BC%3A%20%0A%0A%EC%9C%84%20%EA%B3%84%EC%A0%95%EC%9D%98%20%EA%B3%84%EC%A0%95%20%EB%B0%8F%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%82%AD%EC%A0%9C%EB%A5%BC%20%EC%9A%94%EC%B2%AD%ED%95%A9%EB%8B%88%EB%8B%A4.">계정 삭제 요청 양식 열기</a>
-    <p style="font-size:0.85rem;color:var(--muted)">버튼을 누르면 양식이 미리 채워진 이메일이
-    열립니다. 게임 닉네임, 계정 UID(설정 화면에서 확인 가능), 회신받을 이메일을 적어
-    보내주세요. 메일 앱 연결이 어려우면
-    <a href="mailto:support@durugames.com">support@durugames.com</a>으로 같은 정보를 보내주세요.</p>
+    접수 후 입력한 이메일로 본인 확인을 진행하며, 확인이 끝나면 7일의 삭제 유예 기간이
+    시작됩니다.</p>
+
+    <form id="deletionForm" class="request-form">
+      <div class="form-grid">
+        <div class="field">
+          <label for="server">서버</label>
+          <select id="server" name="server" required disabled>
+            <option value="">서버를 불러오는 중…</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="provider">로그인 방식</label>
+          <select id="provider" name="provider" required>
+            <option value="">선택하세요</option>
+            <option value="0">게스트</option>
+            <option value="1">Google</option>
+            <option value="2">Apple</option>
+            <option value="3">모름</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="nickname">게임 닉네임</label>
+          <input id="nickname" name="nickname" maxlength="16" autocomplete="off" required>
+        </div>
+        <div class="field">
+          <label for="accountUid">계정 UID</label>
+          <input id="accountUid" name="accountUid" inputmode="text" autocomplete="off"
+            pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"
+            maxlength="36" required>
+          <small>게임 내 설정 → 계정 화면에서 확인할 수 있습니다.</small>
+        </div>
+        <div class="field full">
+          <label for="email">회신받을 이메일</label>
+          <input id="email" name="email" type="email" maxlength="254" autocomplete="email" required>
+          <small>가능하면 Google/Apple 계정에 연결된 이메일을 입력해 주세요.</small>
+        </div>
+        <div class="field full">
+          <label for="reason">삭제 사유</label>
+          <select id="reason" name="reason" required>
+            <option value="">선택하세요</option>
+            <option value="0">더 이상 플레이하지 않음</option>
+            <option value="1">기술적 문제</option>
+            <option value="2">개인정보 우려</option>
+            <option value="3">새 계정으로 다시 시작</option>
+            <option value="4">게임 이용이 불편함</option>
+            <option value="5">기타</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="reasonDetail">추가 내용 (선택)</label>
+          <textarea id="reasonDetail" name="reasonDetail" maxlength="500"></textarea>
+        </div>
+        <div class="field full">
+          <label for="confirmation">삭제 확인 메시지</label>
+          <input id="confirmation" name="confirmation" autocomplete="off"
+            placeholder="계정 삭제를 요청합니다" required>
+          <small><strong>계정 삭제를 요청합니다</strong>를 그대로 입력해 주세요.</small>
+        </div>
+      </div>
+
+      <label class="check-field">
+        <input id="privacyAgree" name="privacyAgree" type="checkbox" required>
+        <span>삭제 요청 처리와 본인 확인을 위해 UID, 닉네임, 이메일 및 요청 내용을
+        수집·이용하는 데 동의합니다. 자세한 내용은
+        <a href="/privacy/" target="_blank" rel="noopener">개인정보처리방침</a>에서 확인할 수 있습니다.</span>
+      </label>
+
+      <div class="form-actions">
+        <button id="submitButton" class="btn" type="submit">삭제 요청 접수</button>
+        <span id="formStatus" class="form-status" role="status" aria-live="polite"></span>
+      </div>
+    </form>
+
+    <p style="font-size:0.85rem;color:var(--muted);margin-top:18px">양식 접수가 어려운 경우에만
+    <a href="mailto:support@durugames.com">support@durugames.com</a>으로 문의해 주세요.</p>
   </div>
 
   <h2>삭제 처리 절차</h2>
@@ -77,5 +147,92 @@
     © 2026 DURU GAMES. All rights reserved.
   </div>
 </footer>
+<script>
+"use strict";
+const API_URL = "https://pyovnoawlxfkxhjtgufp.supabase.co/rest/v1/rpc/";
+const API_KEY = "sb_publishable_7QAgMo3bU4GZm6Np-0a4Ow_2uLZ2VWo";
+const CONFIRMATION = "계정 삭제를 요청합니다";
+const form = document.getElementById("deletionForm");
+const server = document.getElementById("server");
+const statusEl = document.getElementById("formStatus");
+const submitButton = document.getElementById("submitButton");
+const ERROR_MESSAGES = {
+  invalid_uid: "계정 UID 형식을 확인해 주세요.",
+  invalid_nickname: "게임 닉네임을 확인해 주세요.",
+  invalid_email: "이메일 주소를 확인해 주세요.",
+  invalid_provider: "로그인 방식을 선택해 주세요.",
+  invalid_reason: "삭제 사유를 확인해 주세요.",
+  confirmation_required: "삭제 확인 메시지를 정확히 입력해 주세요.",
+  privacy_agreement_required: "개인정보 수집·이용에 동의해 주세요.",
+  invalid_server: "서버를 다시 선택해 주세요.",
+  account_not_found: "입력한 UID와 서버에 해당하는 계정을 찾을 수 없습니다.",
+};
+
+async function rpc(name, body) {
+  const response = await fetch(API_URL + name, {
+    method: "POST",
+    headers: {
+      "apikey": API_KEY,
+      "Authorization": "Bearer " + API_KEY,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body || {}),
+  });
+  const result = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(result?.message || "요청을 처리하지 못했습니다.");
+  return result;
+}
+
+async function loadServers() {
+  try {
+    const rows = await rpc("list_web_deletion_servers");
+    server.innerHTML = '<option value="">선택하세요</option>' + rows.map(row =>
+      `<option value="${Number(row.id)}">${String(row.name).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}</option>`
+    ).join("");
+    server.disabled = false;
+  } catch (_) {
+    server.innerHTML = '<option value="1">Galaxy-01</option>';
+    server.disabled = false;
+    statusEl.textContent = "서버 목록을 불러오지 못해 기본 서버로 표시했습니다.";
+  }
+}
+
+form.addEventListener("submit", async event => {
+  event.preventDefault();
+  statusEl.className = "form-status";
+  if (form.confirmation.value.trim() !== CONFIRMATION) {
+    statusEl.textContent = "삭제 확인 메시지를 정확히 입력해 주세요.";
+    statusEl.classList.add("error");
+    form.confirmation.focus();
+    return;
+  }
+  submitButton.disabled = true;
+  statusEl.textContent = "접수 중…";
+  try {
+    const result = await rpc("submit_web_account_deletion_request", {
+      p_account_uid: form.accountUid.value.trim(),
+      p_email: form.email.value.trim(),
+      p_nickname: form.nickname.value.trim(),
+      p_galaxy_id: Number(form.server.value),
+      p_provider: Number(form.provider.value),
+      p_reason: Number(form.reason.value),
+      p_reason_detail: form.reasonDetail.value.trim(),
+      p_confirmation: form.confirmation.value.trim(),
+      p_privacy_agreed: form.privacyAgree.checked,
+    });
+    if (!result?.ok) throw new Error(ERROR_MESSAGES[result?.reason] || "입력 내용을 확인해 주세요.");
+    statusEl.textContent = `접수되었습니다. 요청 번호는 #${result.request_id}입니다.`;
+    statusEl.classList.add("ok");
+    form.reset();
+  } catch (error) {
+    statusEl.textContent = "접수하지 못했습니다. 잠시 후 다시 시도해 주세요. (" + error.message + ")";
+    statusEl.classList.add("error");
+  } finally {
+    submitButton.disabled = false;
+  }
+});
+
+loadServers();
+</script>
 </body>
 </html>
