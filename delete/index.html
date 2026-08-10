@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>계정 삭제 안내 | 두루게임즈</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="/style.css?v=20260807">
 </head>
 <body class="delete-page">
@@ -79,11 +78,11 @@
           <input id="nickname" name="nickname" maxlength="16" autocomplete="off" required>
         </div>
         <div class="field">
-          <label for="accountUid">계정 UID</label>
+          <label for="accountUid">계정 UID (선택)</label>
           <input id="accountUid" name="accountUid" inputmode="text" autocomplete="off"
             pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"
-            maxlength="36" required>
-          <small>게임 내 설정 → 계정 화면에서 확인할 수 있습니다.</small>
+            maxlength="36">
+          <small>알고 있다면 게임 내 설정 → 계정 화면의 UID를 입력해 주세요. 앱에 접속할 수 없다면 비워도 됩니다.</small>
         </div>
         <div class="field full">
           <label for="email">회신받을 이메일</label>
@@ -91,9 +90,9 @@
           <small>가능하면 Google/Apple 계정에 연결된 이메일을 입력해 주세요.</small>
         </div>
         <div class="field full">
-          <label for="reason">삭제 사유</label>
-          <select id="reason" name="reason" required>
-            <option value="">선택하세요</option>
+          <label for="reason">삭제 사유 (선택)</label>
+          <select id="reason" name="reason">
+            <option value="">응답하지 않음</option>
             <option value="0">더 이상 플레이하지 않음</option>
             <option value="1">기술적 문제</option>
             <option value="2">개인정보 우려</option>
@@ -116,9 +115,11 @@
 
       <label class="check-field">
         <input id="privacyAgree" name="privacyAgree" type="checkbox" required>
-        <span>삭제 요청 처리와 본인 확인을 위해 UID, 닉네임, 이메일 및 요청 내용을
-        수집·이용하는 데 동의합니다. 자세한 내용은
-        <a href="/privacy/" target="_blank" rel="noopener">개인정보처리방침</a>에서 확인할 수 있습니다.</span>
+        <span><strong>[필수] 개인정보 수집·이용 동의</strong><br>
+        목적: 본인 확인과 계정 삭제 요청 처리 · 항목: 이메일, 로그인 방식, 서버, 닉네임,
+        선택 입력한 UID·삭제 사유·추가 내용 · 보유기간: 요청 처리 완료일부터 3년.
+        동의를 거부할 수 있으나 웹에서 삭제 요청을 접수할 수 없습니다. 자세한 내용은
+        <a href="/privacy/" target="_blank" rel="noopener">개인정보처리방침</a>을 확인해 주세요.</span>
       </label>
 
       <div class="form-actions">
@@ -132,7 +133,7 @@
 
   <h2>삭제 처리 절차</h2>
   <ol>
-    <li>삭제 신청 시 <strong>7일의 유예 기간</strong>이 시작됩니다.</li>
+    <li>웹 요청은 입력 정보와 추가 확인으로 본인 확인을 마친 뒤 삭제가 예약되며, 그때부터 <strong>7일의 유예 기간</strong>이 시작됩니다.</li>
     <li>유예 기간 내 해당 계정으로 로그인하면 삭제 신청을 <strong>철회</strong>할 수 있습니다.
       철회는 해당 계정으로 로그인할 수 있는 경우에만 가능합니다.</li>
     <li><strong>게스트 계정(소셜 미연동)</strong>은 삭제 신청 후 앱을 삭제하거나 기기를 변경하면
@@ -144,12 +145,12 @@
   <h2>삭제되는 데이터</h2>
   <ul>
     <li>계정 정보(UID, 닉네임, 소셜 연동 정보), 게임 진행 데이터(행성·건물·유닛·연구·업적)</li>
-    <li>보유 재화(<strong>에테르 포함 — 유·무상 불문 소멸, 환불되지 않음</strong>)</li>
+    <li>보유 재화(에테르 포함)는 소멸합니다. 다만 관계 법령 또는 앱 마켓 정책에 따라 환급되는 경우는 제외합니다.</li>
     <li>우편, 탐사 기록, 회사(길드) 소속 정보</li>
   </ul>
 
   <h2>보관되는 데이터</h2>
-  <p>「전자상거래법」에 따라 결제·환불 관련 기록은 법정 기간(5년) 동안 분리 보관 후 파기됩니다.
+  <p>결제·환불 기록은 5년, 삭제 요청 및 분쟁처리 기록과 부정 이용 신고·제재 증거는 처리 완료일부터 3년 동안 분리 보관 후 파기·익명화됩니다.
   자세한 내용은 <a href="/privacy/">개인정보처리방침</a>을 참고하세요.</p>
 
   <div class="notice">
@@ -161,6 +162,8 @@
 
 <footer>
   <div class="wrap">
+    상호: 두루게임즈 | 대표: 임재식 | 사업자등록번호: 821-06-03347<br>
+    통신판매업 신고번호: 2026-서울강서-1942호 | 주소: 서울시 강서구 공항대로 303, 205호<br>
     <a href="/terms/">이용약관</a> · <a href="/privacy/">개인정보처리방침</a> · <a href="/operation/">운영정책</a> ·
     <a href="/delete/">계정 삭제</a> · <a href="/support/">고객지원</a><br>
     © 2026 DURU GAMES. All rights reserved.
@@ -188,7 +191,7 @@ const ERROR_MESSAGES = {
   confirmation_required: "삭제 확인 메시지를 정확히 입력해 주세요.",
   privacy_agreement_required: "개인정보 수집·이용에 동의해 주세요.",
   invalid_server: "서버를 다시 선택해 주세요.",
-  account_not_found: "입력한 UID와 서버에 해당하는 계정을 찾을 수 없습니다.",
+  account_not_found: "입력한 계정 정보가 서로 일치하지 않습니다.",
 };
 
 async function rpc(name, body) {
@@ -254,7 +257,7 @@ form.addEventListener("submit", async event => {
       p_nickname: form.nickname.value.trim(),
       p_galaxy_id: Number(form.server.value),
       p_provider: Number(form.provider.value),
-      p_reason: Number(form.reason.value),
+      p_reason: form.reason.value === "" ? null : Number(form.reason.value),
       p_reason_detail: form.reasonDetail.value.trim(),
       p_confirmation: form.confirmation.value.trim(),
       p_privacy_agreed: form.privacyAgree.checked,

@@ -4,159 +4,132 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>개인정보처리방침 | 두루게임즈</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <a class="logo" href="/">DURU<span>GAMES</span></a>
-    <nav>
-      <a href="/serantum/">게임</a>
-      <a href="/support/">고객지원</a>
-      <a href="/terms/">이용약관</a>
-      <a href="/privacy/">개인정보처리방침</a>
-    </nav>
-  </div>
-</header>
+<header><div class="wrap">
+  <a class="logo" href="/">DURU<span>GAMES</span></a>
+  <nav><a href="/serantum/">게임</a><a href="/support/">고객지원</a><a href="/terms/">이용약관</a><a href="/privacy/">개인정보처리방침</a></nav>
+</div></header>
 
 <main class="wrap">
   <h1>개인정보처리방침</h1>
-  <p class="sub">시행일: <span class="placeholder">[출시일]</span> · 버전 1.6 (초안)</p>
-
-  <div class="notice">
-    본 문서는 출시 전 초안입니다. <span class="placeholder">노란색 표시</span> 항목은
-    사업자 등록 및 출시 시점에 확정됩니다.
-  </div>
-
-  <p>두루게임즈(이하 "회사")는 「개인정보 보호법」 등 관계 법령을
-  준수하며, 게임 서비스 "세란텀: 은하 대개척"(이하 "서비스") 이용자의 개인정보를 다음과 같이
-  처리합니다.</p>
+  <p class="sub">시행일: <span class="placeholder">[출시일]</span> · 버전 1.7 (초안)</p>
+  <div class="notice">본 문서는 출시 전 초안이며 시행일은 정식 출시 전에 확정됩니다.</div>
+  <p>두루게임즈(이하 "회사")는 「개인정보 보호법」 등 관계 법령을 준수하며, "세란텀: 은하 대개척"(이하 "서비스") 이용자의 개인정보를 다음과 같이 처리합니다.</p>
 
   <h2>1. 수집하는 개인정보 항목 및 수집 방법</h2>
   <table>
     <tr><th>구분</th><th>항목</th><th>수집 시점</th></tr>
-    <tr><td>필수</td><td>계정 식별자(UID), 기기 식별 정보, 닉네임</td><td>게임 최초 실행(게스트 계정 생성) 시 자동 생성</td></tr>
+    <tr><td>필수</td><td>계정 식별자(UID), 설치 시 생성되는 임의 UUID, 닉네임</td><td>만 14세 이상 확인 및 이용약관 동의 후 계정 생성 시</td></tr>
     <tr><td>선택</td><td>소셜 로그인 식별자(Google/Apple), 이메일 주소</td><td>계정 연동 시</td></tr>
-    <tr><td>자동</td><td>게임 이용 기록, 접속 일시, 구매 기록, 채팅 내용(회사(길드)·동맹 채팅), 기기 OS·모델 정보, 서비스 이용 통계(분석 도구의 앱 인스턴스 식별자, IP 기반 대략적 위치 포함)</td><td>서비스 이용 중</td></tr>
+    <tr><td>자동</td><td>게임 이용 기록, 접속 일시, 구매 기록, 채팅 내용, 기기 OS·모델 정보</td><td>서비스 이용 중</td></tr>
     <tr><td>선택</td><td>푸시 알림 토큰</td><td>기기의 알림 권한 허용 시</td></tr>
-    <tr><td>문의 시</td><td>이메일 주소, 닉네임·UID, 문의 내용에 포함된 정보</td><td>고객지원 문의 및 웹 계정 삭제 요청 양식 접수 시</td></tr>
+    <tr><td>선택</td><td>앱 이용 이벤트·세션, 앱 인스턴스 식별자, 기기 정보, IP 기반 대략적 위치</td><td>서비스 개선 이용통계 및 국외이전에 별도 동의한 경우</td></tr>
+    <tr><td>문의·삭제 요청</td><td>이메일 주소, 로그인 제공자, 서버, 닉네임, 선택적으로 입력한 UID 및 요청 내용</td><td>고객지원 또는 웹 삭제 요청 접수 시</td></tr>
   </table>
 
   <h2>2. 개인정보의 처리 목적</h2>
   <ul>
-    <li>게임 서비스 제공 및 계정·진행 데이터 저장</li>
-    <li>유료 서비스(인앱 결제) 제공, 구매 이력 관리 및 환불 처리</li>
-    <li>부정 이용(치트·어뷰징) 방지 및 서비스 안정성 확보</li>
-    <li>고객 문의 대응 및 공지사항 전달</li>
+    <li>게임 서비스 제공, 계정·진행 데이터 저장 및 계정 연동</li>
+    <li>인앱 결제 제공, 구매 이력 관리, 청약철회·환불 및 분쟁 처리</li>
+    <li>치트·어뷰징 방지, 신고 처리 및 서비스 안정성 확보</li>
+    <li>고객 문의·계정 삭제 요청 처리, 공지사항 및 선택한 알림 전달</li>
+    <li>별도 동의 시 서비스 이용 통계 분석과 품질 개선</li>
   </ul>
 
   <h2>3. 보유 및 이용 기간</h2>
-  <ul>
-    <li>계정 정보: <strong>계정 삭제 완료 시까지</strong> (삭제 신청 후 7일의 유예 기간 경과 시
-      파기 — 절차는 <a href="/terms/">이용약관</a> 제17조 및 <a href="/delete/">계정 삭제 안내</a> 참조)</li>
-    <li>전자상거래 관련 기록(계약·청약철회·대금결제: 5년, 소비자 불만·분쟁처리: 3년)은
-      「전자상거래법」에 따라 해당 기간 보관 후 파기</li>
-    <li>서비스 접속 기록(로그인 기록 등): 「통신비밀보호법」에 따라 <strong>3개월</strong> 보관 후 파기</li>
-  </ul>
+  <table>
+    <tr><th>항목</th><th>보유기간</th></tr>
+    <tr><td>계정·게임 정보</td><td>계정 삭제 완료 시까지(삭제 신청 후 7일 유예)</td></tr>
+    <tr><td>채팅 내용</td><td>생성일부터 30일</td></tr>
+    <tr><td>서비스 접속 기록</td><td>「통신비밀보호법」에 따라 3개월</td></tr>
+    <tr><td>계약·청약철회·대금결제 기록 및 구매 영수증</td><td>거래일부터 5년. 이후 계정 식별자와 검증 원문을 삭제하고, 계정과 연결할 수 없는 스토어·거래 키만 중복 지급 방지를 위해 보존</td></tr>
+    <tr><td>소비자 불만·분쟁 및 웹 계정 삭제 요청 기록</td><td>처리 완료일부터 3년</td></tr>
+    <tr><td>부정 이용 신고·제재 증거</td><td>사건 처리 완료일부터 3년</td></tr>
+    <tr><td>광고성 정보 수신 동의·철회 기록</td><td>계정 삭제 시까지</td></tr>
+    <tr><td>Firebase Analytics 정보</td><td>최대 14개월. 철회 시 추가 수집 중단</td></tr>
+  </table>
+  <p>법령에 따라 보관하는 정보는 게임 운영 데이터와 분리하고 목적 외로 이용하지 않으며, 기간 만료 후 자동 파기 또는 익명화합니다.</p>
 
   <h2>4. 개인정보의 제3자 제공 및 처리 위탁</h2>
   <ol>
-    <li>회사는 이용자의 개인정보를 <strong>제3자에게 제공하지 않습니다.</strong> 다만 법령에
-      따라 수사기관 등이 적법한 절차로 요청하는 경우는 예외로 합니다.</li>
-    <li>회사는 서비스 제공을 위해 다음과 같이 개인정보 처리를 위탁합니다.
+    <li>회사는 이용자의 개인정보를 제3자에게 제공하지 않습니다. 다만 법령에 따른 적법한 요청은 예외입니다.</li>
+    <li>회사는 다음 업무를 위탁합니다.
       <table>
-        <tr><th>수탁자</th><th>위탁 업무</th><th>비고</th></tr>
-        <tr><td>Supabase, Inc.</td><td>게임 데이터의 보관 및 처리(서버 인프라)</td><td>데이터는 국내(AWS 서울 리전) 보관 — 제5항 참조</td></tr>
-        <tr><td>Google LLC</td><td>푸시 알림 발송(Firebase Cloud Messaging), 이용 통계 분석(Firebase Analytics)</td><td>국외 이전 — 제5항 참조</td></tr>
-        <tr><td>Apple Inc.</td><td>푸시 알림 발송(Apple Push Notification service)</td><td>iOS 기기에 한함 — 제5항 참조</td></tr>
+        <tr><th>수탁자</th><th>업무</th></tr>
+        <tr><td>Supabase Pte. Ltd. 및 인프라·지원 하위처리자(Amazon Web Services, Inc., Supabase, Inc.)</td><td>인증, 게임 데이터 보관·처리, 데이터베이스 및 서버 인프라 운영</td></tr>
+        <tr><td>Google LLC</td><td>Android 푸시 알림(FCM), 선택 동의한 이용통계 분석(Firebase Analytics)</td></tr>
+        <tr><td>Apple Inc.</td><td>iOS 푸시 알림(APNs), Apple 계정 연동</td></tr>
       </table>
     </li>
-    <li>결제는 앱 마켓(Google Play, App Store)이 자체 약관과 처리방침에 따라 직접 처리하며,
-      회사는 결제 승인 결과(구매 영수증)만을 전달받습니다.</li>
+    <li>결제는 앱 마켓이 자체 약관과 처리방침에 따라 처리하며, 회사는 결제 승인 결과와 구매 영수증만 전달받습니다.</li>
   </ol>
 
   <h2>5. 개인정보의 국외 이전</h2>
-  <p>회사는 서비스 제공(데이터 보관·처리 위탁)을 위해 아래와 같이 개인정보를 국외로
-  이전합니다. 이는 「개인정보 보호법」 제28조의8 제1항 제3호(계약 이행을 위한 처리위탁·보관)에
-  근거합니다.</p>
+  <h3>Supabase</h3>
   <table>
-    <tr><th>이전받는 자</th><td>Supabase, Inc. (미국 법인, <a href="mailto:privacy@supabase.io">privacy@supabase.io</a>)</td></tr>
-    <tr><th>보관 위치</th><td>대한민국 (AWS 서울 리전) — 데이터는 국내에 저장됩니다. 다만 이전받는 자가 미국 법인으로, 서버 운영·기술 지원을 위한 관리 목적의 접근이 국외(미국)에서 이루어질 수 있습니다.</td></tr>
-    <tr><th>이전 항목</th><td>제1항의 수집 항목 전체(계정 식별자, 닉네임, 게임 이용 기록, 구매 기록 등)</td></tr>
-    <tr><th>이전 시기·방법</th><td>서비스 이용 시점에 네트워크를 통해 상시 전송·저장</td></tr>
-    <tr><th>이용 목적·보유 기간</th><td>게임 데이터의 보관 및 처리(위 제2·3항과 동일)</td></tr>
-    <tr><th>이전 거부 방법</th><td>고객지원(<a href="mailto:support@durugames.com">support@durugames.com</a>)으로 거부 의사를 통지할 수 있으나,
-      국외 이전은 서비스 제공에 필수적이므로 거부 시 서비스 이용이 불가능합니다.</td></tr>
+    <tr><th>국내 보관 장소</th><td>대한민국, AWS 서울 리전(ap-northeast-2)</td></tr>
+    <tr><th>국외 이전받는 자·국가</th><td>Supabase Pte. Ltd. / 싱가포르, Supabase, Inc. / 미국 (<a href="mailto:privacy@supabase.io">privacy@supabase.io</a>)</td></tr>
+    <tr><th>이전 항목</th><td>운영·보안·장애지원 대상 계정, 게임 이용, 접속 및 구매 기록 중 필요한 항목</td></tr>
+    <tr><th>시기·방법</th><td>운영·보안·장애지원이 필요한 때 암호화된 네트워크를 통한 원격 조회</td></tr>
+    <tr><th>목적·기간</th><td>인프라 운영·보안 대응·장애 분석. 별도 사본은 목적 달성 후 파기하며 국내 원본은 제3항의 기간 동안 보관</td></tr>
+    <tr><th>근거·거부</th><td>「개인정보 보호법」 제28조의8 제1항 제3호의 계약 이행을 위한 처리위탁. <a href="mailto:support@durugames.com">고객지원</a>으로 거부할 수 있으나 핵심 서버 처리가 불가능해 서비스 이용이 제한됩니다.</td></tr>
   </table>
-  <p>또한 푸시 알림 발송을 위해 푸시 알림 토큰이 Google LLC(Firebase Cloud Messaging, 미국,
-  <a href="https://support.google.com/policies/troubleshooter/7575787">개인정보 문의</a>) 및
-  Apple Inc.(Apple Push Notification service, 미국,
-  <a href="https://www.apple.com/legal/privacy/contact/">개인정보 문의</a>)에 서비스 이용
-  시점에 네트워크를 통해 전송됩니다(같은 조항에 근거한 처리위탁·보관, 발송 목적 달성 시까지
-  보유). 기기의 알림 권한을 끄면 전송되지 않으며(이전 거부 방법), 이 경우 푸시 알림 수신
-  외의 서비스 이용에는 제한이 없습니다.</p>
-  <p>또한 서비스 이용 통계 분석을 위해 앱 이용 기록(이벤트·세션), 기기 정보(OS·모델),
-  앱 인스턴스 식별자 및 IP 주소(대략적 위치 파악)가 Google LLC(Firebase Analytics, 미국,
-  <a href="https://support.google.com/policies/troubleshooter/7575787">개인정보 문의</a>)에
-  서비스 이용 시점에 네트워크를 통해 전송됩니다(같은 조항에 근거한 처리위탁·보관, 보유 기간
-  최대 14개월). 광고 식별자는 수집하지 않으며, 수집된 정보는 서비스 이용 통계 분석·품질
-  개선 목적으로만 사용됩니다.</p>
+
+  <h3>Google FCM / Apple APNs</h3>
+  <table>
+    <tr><th>이전 국가·항목</th><td>미국 / 푸시 토큰, 알림 전송에 필요한 기기·메시지 정보</td></tr>
+    <tr><th>시기·방법·목적</th><td>알림 권한을 허용하고 알림 서비스를 이용할 때 암호화 전송 / 푸시 발송</td></tr>
+    <tr><th>기간·거부</th><td>토큰 무효화·계정 삭제 또는 목적 달성 시까지. 기기 알림 권한 또는 게임 설정에서 거부할 수 있고 푸시 외 서비스 이용에는 제한이 없습니다.</td></tr>
+  </table>
+
+  <h3>Google Firebase Analytics</h3>
+  <table>
+    <tr><th>이전받는 자·국가</th><td>Google LLC / 미국</td></tr>
+    <tr><th>이전 항목</th><td>앱 이용 이벤트·세션, 앱 인스턴스 식별자, OS·모델, IP 기반 대략적 위치</td></tr>
+    <tr><th>시기·방법·목적·기간</th><td>별도 동의 후 서비스 이용 시 암호화 전송 / 통계 분석·품질 개선 / 최대 14개월</td></tr>
+    <tr><th>거부</th><td>최초 동의 화면 또는 설정에서 거부·철회할 수 있으며 서비스 이용에는 제한이 없습니다. 광고 식별자는 수집하지 않습니다.</td></tr>
+  </table>
 
   <h2>6. 만 14세 미만 아동</h2>
-  <p>본 서비스는 <strong>만 14세 이상</strong>만 이용할 수 있으며, 만 14세 미만 아동의
-  개인정보를 수집하지 않습니다. 만 14세 미만임이 확인된 계정은 지체 없이 파기합니다.</p>
+  <p>본 서비스는 만 14세 이상만 이용할 수 있습니다. 계정 생성 전 만 14세 이상 여부를 확인하며, 만 14세 미만임이 확인된 개인정보는 지체 없이 파기합니다.</p>
 
   <h2>7. 개인정보의 파기</h2>
-  <p>보유 기간이 경과하거나 처리 목적이 달성된 개인정보는 지체 없이 파기합니다.
-  전자적 파일은 복구 불가능한 방법으로 삭제합니다. 계정 삭제 절차는
-  <a href="/delete/">계정 삭제 안내</a>를 참고하세요.</p>
+  <p>보유기간 경과 또는 목적 달성 시 개인정보를 지체 없이 파기합니다. 전자적 파일은 복구하기 어려운 방법으로 삭제하고, 법정 보관 정보는 분리 보관 후 자동 파기 또는 익명화합니다.</p>
 
-  <h2>8. 자동 수집 장치 및 맞춤형 광고</h2>
+  <h2>8. 자동 수집 및 맞춤형 광고</h2>
   <ul>
-    <li>본 홈페이지는 쿠키 등 자동 수집 장치를 사용하지 않는 정적 사이트입니다.</li>
-    <li>게임 내에서 수집되는 이용 기록(제1항의 "자동" 항목)은 서비스 제공과 부정 이용 방지
-      목적으로만 사용됩니다.</li>
-    <li>서비스 품질 개선을 위해 분석 도구(Google Firebase Analytics)로 앱 이용 통계를
-      수집합니다(제5항 참조). 광고 식별자는 수집하지 않습니다.</li>
-    <li>회사는 맞춤형 광고를 위한 행태정보를 수집·이용하지 않으며, 맞춤형 광고를
-      제공하지 않습니다(광고 SDK 미사용).</li>
-    <li>이벤트·혜택 안내 등 <strong>광고성 정보의 푸시 알림</strong>은 게임 내
-      [설정 → 알림]의 "공지·이벤트" 항목에 <strong>동의한 경우에만</strong> 발송되며,
-      같은 메뉴에서 언제든지 철회할 수 있습니다.</li>
+    <li>홈페이지는 쿠키를 사용하지 않습니다. 계정 삭제 폼을 제출하면 제1항의 삭제 요청 정보가 Supabase로 전송됩니다.</li>
+    <li>게임 이용 기록은 서비스 제공, 보안 및 부정 이용 방지에 사용합니다.</li>
+    <li>Firebase Analytics는 별도 선택 동의 후에만 활성화되며 설정에서 철회할 수 있습니다.</li>
+    <li>회사는 광고 SDK를 사용하지 않으며 맞춤형 광고를 위한 행태정보를 처리하지 않습니다.</li>
+    <li>광고성 공지·이벤트 푸시는 명시적으로 동의한 경우에만 발송합니다. 21:00~08:00 광고성 푸시는 별도 야간 동의가 있어야 하며, 설정 → 알림에서 언제든 철회할 수 있습니다.</li>
   </ul>
 
-  <h2>9. 이용자의 권리</h2>
-  <p>이용자는 언제든지 자신의 개인정보에 대한 열람·정정·삭제·처리정지를 요구할 수 있습니다.
-  요청은 게임 내 [설정 → 계정 · 지원] 메뉴 또는 고객지원 이메일로 접수할 수 있으며, 회사는 지체 없이
-  조치합니다. 법정대리인이나 위임을 받은 자를 통한 요청도 가능합니다.</p>
+  <h2>9. 이용자의 권리와 행사 방법</h2>
+  <p>이용자는 개인정보 열람·정정·삭제·처리정지를 요구할 수 있습니다. 게임 내 설정 → 계정·지원, <a href="/delete/">웹 계정 삭제</a> 또는 <a href="mailto:support@durugames.com">고객지원</a>으로 신청할 수 있습니다. 웹 삭제 신청에서 UID는 선택 항목이며, UID가 없으면 연결 이메일·로그인 제공자·서버·닉네임의 일치 여부와 추가 본인 확인을 거쳐 처리합니다. 법정대리인이나 위임받은 자도 관계 법령에 따라 권리를 행사할 수 있습니다.</p>
 
   <h2>10. 안전성 확보 조치</h2>
   <ul>
-    <li>전송 구간 암호화(TLS) 및 서버 접근 통제</li>
-    <li>서버 권위 검증 구조(클라이언트 조작에 의한 데이터 위·변조 차단)</li>
-    <li>개인정보 취급 최소화(1인 개발·운영)</li>
+    <li>전송 구간 암호화(TLS), 접근권한 최소화 및 서버 접근 통제</li>
+    <li>서버 권위 검증과 감사 기록을 통한 위·변조 및 부정 이용 방지</li>
+    <li>법정 보관 정보 분리, 보유기간 만료 정보의 자동 파기·익명화</li>
   </ul>
 
   <h2>11. 개인정보 보호책임자</h2>
-  <table>
-    <tr><th>책임자</th><td>임재식 (대표)</td></tr>
-    <tr><th>연락처</th><td><a href="mailto:support@durugames.com">support@durugames.com</a></td></tr>
-  </table>
-  <p>개인정보 침해에 대한 신고·상담은 개인정보침해신고센터(privacy.kr, 국번 없이 118) 또는
-  개인정보분쟁조정위원회(kopico.go.kr, 1833-6972)에 문의할 수 있습니다.</p>
+  <table><tr><th>책임자</th><td>임재식 (대표)</td></tr><tr><th>연락처</th><td><a href="mailto:support@durugames.com">support@durugames.com</a></td></tr></table>
+  <p>개인정보 침해 상담은 개인정보침해신고센터(privacy.kr, 118) 또는 개인정보분쟁조정위원회(kopico.go.kr, 1833-6972)를 이용할 수 있습니다.</p>
 
   <h2>12. 방침의 변경</h2>
-  <p>본 방침이 변경되는 경우 시행 7일 전(이용자에게 불리한 변경은 30일 전) 게임 내 공지 및
-  본 페이지를 통해 고지합니다.</p>
+  <p>방침 변경 시 시행 7일 전, 이용자에게 불리하거나 중대한 변경은 30일 전부터 게임 내와 홈페이지에 공지하고 필요한 경우 개별 통지합니다.</p>
 </main>
 
-<footer>
-  <div class="wrap">
-    <a href="/terms/">이용약관</a> · <a href="/privacy/">개인정보처리방침</a> · <a href="/operation/">운영정책</a> ·
-    <a href="/delete/">계정 삭제</a> · <a href="/support/">고객지원</a><br>
-    © 2026 DURU GAMES. All rights reserved.
-  </div>
-</footer>
+<footer><div class="wrap">
+  상호: 두루게임즈 | 대표: 임재식 | 사업자등록번호: 821-06-03347<br>
+  통신판매업 신고번호: 2026-서울강서-1942호 | 주소: 서울시 강서구 공항대로 303, 205호<br>
+  <a href="/terms/">이용약관</a> · <a href="/privacy/">개인정보처리방침</a> · <a href="/operation/">운영정책</a> · <a href="/delete/">계정 삭제</a> · <a href="/support/">고객지원</a><br>
+  © 2026 DURU GAMES. All rights reserved.
+</div></footer>
 </body>
 </html>
