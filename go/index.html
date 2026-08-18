@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>세란텀: 은하 대개척 설치</title>
+<style>
+  body { margin:0; min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+         gap:20px; background:#07090b; color:#f0f0eb; font-family:-apple-system, "Pretendard", sans-serif; }
+  p { margin:0; color:#8f9498; font-size:0.95rem; }
+  a { padding:14px 30px; border:1px solid rgba(240,240,235,0.25); border-radius:999px;
+      color:#f0f0eb; font-weight:650; text-decoration:none; }
+  a:hover { border-color:#d89a45; color:#d89a45; }
+</style>
+</head>
+<body>
+<p>스토어로 이동하고 있습니다…</p>
+<a href="https://apps.apple.com/kr/app/id6794236876">App Store</a>
+<a href="https://play.google.com/store/apps/details?id=com.durugames.astradominion">Google Play</a>
+<a href="/serantum/" style="border:0;color:#8f9498;font-weight:400">게임 소개 보기</a>
+<script>
+  // 기기 판별 즉시 리디렉션 — 판별 불가(PC 등)면 버튼 화면 유지
+  var ua = navigator.userAgent;
+  if (/android/i.test(ua))
+    location.replace("https://play.google.com/store/apps/details?id=com.durugames.astradominion");
+  else if (/iphone|ipad|ipod/i.test(ua))
+    location.replace("https://apps.apple.com/kr/app/id6794236876");
+</script>
+</body>
+</html>
